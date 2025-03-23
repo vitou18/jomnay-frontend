@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
-  return (
-    <div className='bg-pink-600'>
-      APp      
-    </div>
-  )
-}
+  return <Outlet />;
+};
 
-export default App
+export default App;
