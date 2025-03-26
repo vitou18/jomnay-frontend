@@ -6,7 +6,7 @@ import Expense from "../module/Expense/Expense";
 import RootLayout from "../layout/RootLayout";
 
 const PrivateRoute = () => {
-  const accessToken = true;
+  const accessToken = false;
 
   if (!accessToken) return <Navigate to="/auth" replace />;
 
