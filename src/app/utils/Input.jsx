@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 
-const Input = ({ name, type, onChange, mt }) => {
+const Input = ({ name, type, onChange, mt, value }) => {
   const [show, setShow] = useState(false);
 
   if (type === "password") {
@@ -18,14 +18,15 @@ const Input = ({ name, type, onChange, mt }) => {
           <input
             placeholder=""
             onChange={(e) => onChange(e)}
-            className="w-full px-[12px] py-[8px] border-[#696969] focus:border-[#3A3A3A] not-placeholder-shown:border-[#3A3A3A] duration-300 transition border-[2px] rounded-lg outline-0 text-[16px] text-[#696969]"
+            className="w-full px-[12px] py-[8px] border-[#696969] focus:border-[#3A3A3A] not-placeholder-shown:border-[#3A3A3A] duration-300 transition border-[2px] rounded-lg outline-0 text-[14px] text-[#3A3A3A]"
             type={show ? "text" : "password"}
             name={name}
             id={name}
+            value={value}
           />
 
           <div
-            className="cursor-pointer absolute right-2 top-1/2 -translate-y-1/2"
+            className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2"
             onClick={() => setShow(!show)}
           >
             {show ? (
@@ -49,10 +50,11 @@ const Input = ({ name, type, onChange, mt }) => {
         <input
           onChange={(e) => onChange(e)}
           placeholder=""
-          className="w-full px-[12px] py-[8px] border-[#696969] focus:border-[#3A3A3A] not-placeholder-shown:border-[#3A3A3A] duration-300 transition border-[2px] rounded-lg outline-0 text-[16px] text-[#696969]"
+          className="w-full px-[12px] py-[8px] border-[#696969] focus:border-[#3A3A3A] not-placeholder-shown:border-[#3A3A3A] duration-300 transition border-[2px] rounded-lg outline-0 text-[14px] text-[#3A3A3A]"
           type={type}
           name={name}
           id={name}
+          value={value}
         />
       </div>
     </div>

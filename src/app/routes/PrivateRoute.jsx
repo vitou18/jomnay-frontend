@@ -4,9 +4,10 @@ import Dashboard from "../module/Dashboard/Dashboard";
 import Income from "../module/Income/Income";
 import Expense from "../module/Expense/Expense";
 import RootLayout from "../layout/RootLayout";
+import useAuth from "../module/Auth/core/action";
 
 const PrivateRoute = () => {
-  const accessToken = false;
+  const { accessToken } = useAuth();
 
   if (!accessToken) return <Navigate to="/auth" replace />;
 

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initUser = {
   email: "mengvuthvitou18@gmail.com",
-  passowrd: "18#2025Lt",
+  password: "18#2025Lt",
 };
 
 const initialState = {
@@ -21,7 +21,7 @@ const authSlice = createSlice({
     },
 
     setProfile: (state, action) => {
-      state.login = action.payload;
+      state.profile = action.payload;
       localStorage.setItem("user", JSON.stringify(action.payload));
     },
 

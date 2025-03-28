@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Forms from "./components/Forms";
 import Logo from "../../../_template/assets/img/big_logo.png";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 const Auth = () => {
   const [swap, setSwap] = useState(false);
@@ -21,7 +22,7 @@ const Auth = () => {
             {swap ? "Register" : "Login"}
           </h3>
 
-          {swap ? <Forms type="register" /> : <Forms />}
+          {swap ? <Register /> : <Login />}
 
           <p className="text-center mt-[20px] lg-[mt-30px] text-[#696969]">
             {swap ? "Already have an account? " : "Don't have an account? "}
