@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import Button from "../../../utils/Button";
 import Input from "../../../utils/Input";
 import useAuth from "../core/action";
@@ -9,6 +10,17 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (!email) {
+      toast.error("Email are required!");
+      return;
+    }
+
+    if (!password) {
+      toast.error("Password are required!");
+      return;
+    }
+
     onLogin(login);
   };
 

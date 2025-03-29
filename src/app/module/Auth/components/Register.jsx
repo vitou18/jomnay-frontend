@@ -9,7 +9,7 @@ const Register = () => {
 
   return (
     <form onSubmit={""}>
-      <Input name="name" type="text" />
+      <Input name="fullName" type="text" />
 
       <Input name="email" type="email" mt />
 

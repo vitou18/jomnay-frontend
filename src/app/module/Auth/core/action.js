@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { reqLogin } from "./request";
 import { setAccessToken, setLogin, setProfile } from "./slice";
+import toast from "react-hot-toast";
 
 const useAuth = () => {
   const auth = useSelector((state) => state.auth);
@@ -17,7 +18,8 @@ const useAuth = () => {
         navigate("/");
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
+        toast.error("Invalid credentials");
       });
   };
 
