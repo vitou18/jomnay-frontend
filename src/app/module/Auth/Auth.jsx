@@ -7,7 +7,7 @@ const Auth = () => {
   const [swap, setSwap] = useState(false);
 
   return (
-    <div className="w-full flex min-h-screen">
+    <div className="w-full flex min-h-screen font-popins">
       <div className="hidden bg-[#F8F8F8] md:flex items-center justify-center flex-1">
         <img src={Logo} className="w-[240px] lg:w-[280px]" alt="Jomnay Logo" />
       </div>
@@ -28,7 +28,7 @@ const Auth = () => {
             {swap ? "Already have an account? " : "Don't have an account? "}
             <span
               onClick={() => setSwap(!swap)}
-              className="text-[#EFBB5E] font-medium cursor-pointer underline decoration-[#EFBB5E]"
+              className="text-[#EFBB5E] text-[14px] font-medium cursor-pointer underline decoration-[#EFBB5E]"
             >
               {swap ? "Signin" : "Signup"}
             </span>
