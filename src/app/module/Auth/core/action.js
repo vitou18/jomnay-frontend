@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { reqLogin } from "./request";
-import { setAccessToken, setLogin, setProfile } from "./slice";
+import { setAccessToken, setLogin, setLogout, setProfile } from "./slice";
 import toast from "react-hot-toast";
 
 const useAuth = () => {
@@ -26,10 +26,16 @@ const useAuth = () => {
   const onChangeLogin = (e) =>
     dispatch(setLogin({ name: e.target.name, value: e.target.value }));
 
+  const onLogout = () => {
+    dispatch(setLogout());
+    navigate("/auth");
+  };
+
   return {
     ...auth,
     onLogin,
     onChangeLogin,
+    onLogout,
   };
 };
 
