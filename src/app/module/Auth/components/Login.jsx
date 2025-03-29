@@ -11,13 +11,8 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!email) {
-      toast.error("Email are required!");
-      return;
-    }
-
-    if (!password) {
-      toast.error("Password are required!");
+    if (!email || !password) {
+      toast.error("Please fill in all fields");
       return;
     }
 

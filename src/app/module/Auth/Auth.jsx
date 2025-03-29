@@ -22,7 +22,7 @@ const Auth = () => {
             {swap ? "Register" : "Login"}
           </h3>
 
-          {swap ? <Register /> : <Login />}
+          {swap ? <Register swap={swap} setSwap={setSwap} /> : <Login />}
 
           <p className="text-center mt-[20px] lg-[mt-30px] text-[#696969]">
             {swap ? "Already have an account? " : "Don't have an account? "}

@@ -5,10 +5,18 @@ const initUser = {
   password: "18#2025Lt",
 };
 
+const createUser = {
+  fullName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
 const initialState = {
   login: initUser,
   profile: JSON.parse(localStorage.getItem("user") ?? "{}"),
   accessToken: localStorage.getItem("access_token"),
+  register: createUser,
 };
 
 const authSlice = createSlice({
@@ -37,10 +45,16 @@ const authSlice = createSlice({
       localStorage.removeItem("access_token");
       localStorage.removeItem("user");
     },
+
+    setRegister: (state, action) => {
+      const data = action.payload;
+
+      state.register[data.name] = data.value;
+    },
   },
 });
 
-export const { setAccessToken, setProfile, setLogin, setLogout } =
+export const { setAccessToken, setProfile, setLogin, setLogout, setRegister } =
   authSlice.actions;
 
 export default authSlice.reducer;

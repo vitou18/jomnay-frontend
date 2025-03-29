@@ -1,19 +1,64 @@
 import React from "react";
 import Input from "../../../utils/Input";
 import Button from "../../../utils/Button";
+import useAuth from "../core/action";
+import toast from "react-hot-toast";
 
-const Register = () => {
+const Register = ({ swap, setSwap }) => {
+  const { onChangeRegister, register, onRegister } = useAuth();
+
+  let { fullName, email, password, confirmPassword } = register;
+
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (!fullName || !email || !password || !confirmPassword) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match.");
+      return;
+    }
+
+    onRegister();
+    setSwap(!swap);
   };
 
+  // console.log(register);
+
   return (
-    <form onSubmit={""}>
-      <Input name="fullName" type="text" />
+    <form onSubmit={onSubmit}>
+      <Input
+        name="fullName"
+        onChange={(e) => onChangeRegister(e)}
+        type="text"
+        value={fullName}
+      />
 
-      <Input name="email" type="email" mt />
+      <Input
+        name="email"
+        type="email"
+        mt
+        value={email}
+        onChange={(e) => onChangeRegister(e)}
+      />
 
-      <Input name="password" type="password" mt />
+      <Input
+        name="password"
+        type="password"
+        mt
+        value={password}
+        onChange={(e) => onChangeRegister(e)}
+      />
+      <Input
+        name="confirmPassword"
+        type="password"
+        mt
+        value={confirmPassword}
+        onChange={(e) => onChangeRegister(e)}
+      />
 
       <Button text="Register" type="submit" />
     </form>
