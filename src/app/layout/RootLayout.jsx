@@ -1,20 +1,17 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import useAuth from "../module/Auth/core/action";
+import Sidebar from "./components/Sidebar";
 
 const RootLayout = () => {
-  const { onLogout } = useAuth();
 
   return (
-    <>
-      <div>Sidebar</div>
-
-      <button onClick={onLogout}>Logout</button>
+    <div className="font-popins">
+      <Sidebar />
 
       <main>
         <Outlet />
       </main>
-    </>
+    </div>
   );
 };
 

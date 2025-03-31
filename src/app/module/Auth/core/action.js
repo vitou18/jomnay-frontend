@@ -61,6 +61,7 @@ const useAuth = () => {
 
   return {
     ...auth,
+    navigate,
     onLogin,
     onChangeLogin,
     onLogout,
