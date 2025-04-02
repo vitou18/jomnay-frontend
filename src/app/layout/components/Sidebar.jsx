@@ -1,71 +1,21 @@
-import { useState, useRef, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { RiLogoutBoxLine, RiMenuLine, RiCloseLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import useLayout from "../core/action";
+import Menu from "./Menu";
 
 const Sidebar = ({ sidebarItems, logo, onLogout }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const onClick = () => onLogout();
+
+  // console.log(sideBarShow);
 
   return (
     <>
-      <div
-        className={`fixed top-0 left-0 h-full flex flex-col gap-y-[60px] w-[260px] bg-[#3A3A3A] py-[30px] ps-[30px] transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 z-40`}
-      >
-        <Link to="/" className="block mb-8">
+      <div className="fixed shadow-[0_0_16px_0_rgba(0,0,0,0.2)] md:h-full md:max-h-screen bottom-[30px] px-[20px] py-[15px] md:p-0 right-0 rounded-[40px] left-0 mx-auto md:mx-0 md:rounded-none bg-[#3A3A3A] z-50  w-max md:top-0 md:left-0 md:flex-col md:gap-y-[60px] md:w-[260px] md:bg-[#3A3A3A] md:py-[30px] md:ps-[30px] transition-transform duration-300">
+        <Link to="/" className="hidden md:block md:mb-[80px]">
           <img src={logo} alt="logo" className="w-40 h-auto" />
         </Link>
 
-        <div className="flex flex-col justify-between h-full">
-          <ul className="space-y-4">
-            {sidebarItems.map((item) => (
-              <li key={item.name}>
-                <NavLink
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-4 py-3 border-r-3 transition ${
-                      isActive
-                        ? "border-r-[#EFBB5E] text-[#EFBB5E]"
-                        : "border-transparent hover:border-[#ffffff] text-[#FFFFFF]"
-                    }`
-                  }
-                >
-                  <span className="text-xl">{item.icon}</span>
-                  {item.name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-
-          <button
-            onClick={onClick}
-            className="cursor-pointer flex items-center gap-3 text-white px-4 py-3 w-full transition border-r-2 border-transparent hover:border-[#ffffff]"
-          >
-            <RiLogoutBoxLine className="text-xl" />
-            Logout
-          </button>
-
-          <button className="absolute top-0 right-0 lg:hidden text-[#ffffff] p-2 cursor-pointer">
-            <RiCloseLine className="text-3xl" />
-          </button>
-        </div>
+        <Menu onClick={onClick} sidebarItems={sidebarItems} />
       </div>
-
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed top-5 left-5 lg:hidden text-[#3A3A3A] p-2 rounded-lg z-30 cursor-pointer"
-      >
-        <RiMenuLine className="text-3xl" />
-      </button>
-
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/20 lg:hidden"
-          onClick={() => setIsOpen(false)}
-        ></div>
-      )}
     </>
   );
 };

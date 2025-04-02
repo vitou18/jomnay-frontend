@@ -3,7 +3,11 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import logo from "../../_template/assets/img/small_logo.png";
 import useAuth from "../module/Auth/core/action";
-import { RiExchangeDollarLine, RiHome2Line, RiWalletLine } from "react-icons/ri";
+import {
+  RiExchangeDollarLine,
+  RiHome2Line,
+  RiWalletLine,
+} from "react-icons/ri";
 
 const sidebarItems = [
   { path: "/", name: "Dashboard", icon: <RiHome2Line /> },
@@ -18,7 +22,7 @@ const RootLayout = () => {
     <div className="font-popins">
       <Sidebar logo={logo} onLogout={onLogout} sidebarItems={sidebarItems} />
 
-      <main>
+      <main className="transition duration-500 md:ml-[260px] p-[40px]">
         <Outlet />
       </main>
     </div>
