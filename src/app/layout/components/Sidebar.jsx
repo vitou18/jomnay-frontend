@@ -4,29 +4,12 @@ import { RiLogoutBoxLine, RiMenuLine, RiCloseLine } from "react-icons/ri";
 
 const Sidebar = ({ sidebarItems, logo, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const sidebarRef = useRef(null);
 
-  // Close sidebar if clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen]);
+  const onClick = () => onLogout();
 
   return (
     <>
       <div
-        ref={sidebarRef}
         className={`fixed top-0 left-0 h-full flex flex-col gap-y-[60px] w-[260px] bg-[#3A3A3A] py-[30px] ps-[30px] transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 z-40`}
@@ -45,7 +28,7 @@ const Sidebar = ({ sidebarItems, logo, onLogout }) => {
                     `flex items-center gap-3 px-4 py-3 border-r-3 transition ${
                       isActive
                         ? "border-r-[#EFBB5E] text-[#EFBB5E]"
-                        : "border-transparent text-[#FFFFFF]"
+                        : "border-transparent hover:border-[#ffffff] text-[#FFFFFF]"
                     }`
                   }
                 >
@@ -57,17 +40,14 @@ const Sidebar = ({ sidebarItems, logo, onLogout }) => {
           </ul>
 
           <button
-            onClick={onLogout}
+            onClick={onClick}
             className="cursor-pointer flex items-center gap-3 text-white px-4 py-3 w-full transition border-r-2 border-transparent hover:border-[#ffffff]"
           >
             <RiLogoutBoxLine className="text-xl" />
             Logout
           </button>
 
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-0 right-0 lg:hidden text-[#ffffff] p-2 cursor-pointer"
-          >
+          <button className="absolute top-0 right-0 lg:hidden text-[#ffffff] p-2 cursor-pointer">
             <RiCloseLine className="text-3xl" />
           </button>
         </div>
