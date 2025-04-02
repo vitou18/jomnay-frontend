@@ -3,22 +3,18 @@ import Input from "../../../utils/Input";
 import Button from "../../../utils/Button";
 import useAuth from "../core/action";
 import toast from "react-hot-toast";
+import Logo from "../../../../_template/assets/img/big_logo.png";
 
 const Register = ({ swap, setSwap }) => {
-  const { onChangeRegister, register, onRegister } = useAuth();
+  const { onChangeRegister, register, onRegister, navigate } = useAuth();
 
-  let { fullName, email, password, confirmPassword } = register;
+  let { fullName, email, password } = register;
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!fullName || !email || !password || !confirmPassword) {
+    if (!fullName || !email || !password) {
       toast.error("Please fill in all fields.");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match.");
       return;
     }
 
@@ -29,35 +25,59 @@ const Register = ({ swap, setSwap }) => {
   // console.log(register);
 
   return (
-    <form onSubmit={onSubmit}>
-      <Input
-        placeholder="Enter your full name"
-        name="fullName"
-        onChange={(e) => onChangeRegister(e)}
-        type="text"
-        value={fullName}
-      />
+    <div className="w-full flex min-h-screen font-popins">
+      <div className="hidden transition duration-300 md:flex items-center justify-center flex-1 bg-[#FFFFFF]">
+        <img src={Logo} className="w-[120px] lg:w-[180px]" alt="Jomnay Logo" />
+      </div>
 
-      <Input
-        placeholder="Enter your email"
-        name="email"
-        type="email"
-        mt
-        value={email}
-        onChange={(e) => onChangeRegister(e)}
-      />
+      <div className="transition duration-300 bg-[#F8F8F8] flex-1/3 flex items-center justify-center px-5">
+        <div className="w-full sm:w-max py-[40px] px-[20px] rounded-[8px]">
+          <h3 className="text-center underline decoration-[#3A3A3A] decoration-2 underline-offset-[4px] mb-[30px] lg:mb-[40px] font-semibold text-[32px] text-[#3A3A3A]">
+            Create your new account.
+          </h3>
 
-      <Input
-        placeholder="Enter your password"
-        name="password"
-        type="password"
-        mt
-        value={password}
-        onChange={(e) => onChangeRegister(e)}
-      />
+          <form onSubmit={onSubmit}>
+            <Input
+              placeholder="Enter your full name"
+              name="fullName"
+              onChange={(e) => onChangeRegister(e)}
+              type="text"
+              value={fullName}
+            />
 
-      <Button text="Register" type="submit" />
-    </form>
+            <Input
+              placeholder="Enter your email"
+              name="email"
+              type="email"
+              mt
+              value={email}
+              onChange={(e) => onChangeRegister(e)}
+            />
+
+            <Input
+              placeholder="Enter your password"
+              name="password"
+              type="password"
+              mt
+              value={password}
+              onChange={(e) => onChangeRegister(e)}
+            />
+
+            <Button text="Register" type="submit" />
+          </form>
+
+          <p className="text-center mt-[20px] lg-[mt-30px] text-[#696969]">
+            Already have an account?{" "}
+            <span
+              onClick={() => navigate("/login")}
+              className="text-[#EFBB5E] text-[14px] font-medium cursor-pointer underline decoration-[#EFBB5E]"
+            >
+              Signin
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -34,7 +34,7 @@ const useAuth = () => {
 
   const onLogout = () => {
     dispatch(setLogout());
-    navigate("/auth");
+    navigate("/login");
   };
 
   const onChangeRegister = (e) =>
