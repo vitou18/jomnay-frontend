@@ -41,14 +41,7 @@ const useAuth = () => {
     dispatch(setRegister({ name: e.target.name, value: e.target.value }));
 
   const onRegister = async (e) => {
-    const data = { ...auth.register };
-
-    // Delete confirmPassword
-    if ("confirmPassword" in data) {
-      delete data.confirmPassword;
-    }
-
-    return reqRegister(data)
+    return reqRegister(auth.register)
       .then((res) => {
         // console.log(res);
         toast.success("Registration successful");

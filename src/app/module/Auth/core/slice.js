@@ -9,7 +9,6 @@ const createUser = {
   fullName: "",
   email: "",
   password: "",
-  confirmPassword: "",
 };
 
 const initialState = {

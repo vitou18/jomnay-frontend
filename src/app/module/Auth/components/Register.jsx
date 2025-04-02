@@ -31,6 +31,7 @@ const Register = ({ swap, setSwap }) => {
   return (
     <form onSubmit={onSubmit}>
       <Input
+        placeholder="Enter your full name"
         name="fullName"
         onChange={(e) => onChangeRegister(e)}
         type="text"
@@ -38,6 +39,7 @@ const Register = ({ swap, setSwap }) => {
       />
 
       <Input
+        placeholder="Enter your email"
         name="email"
         type="email"
         mt
@@ -46,17 +48,11 @@ const Register = ({ swap, setSwap }) => {
       />
 
       <Input
+        placeholder="Enter your password"
         name="password"
         type="password"
         mt
         value={password}
-        onChange={(e) => onChangeRegister(e)}
-      />
-      <Input
-        name="confirmPassword"
-        type="password"
-        mt
-        value={confirmPassword}
         onChange={(e) => onChangeRegister(e)}
       />
 

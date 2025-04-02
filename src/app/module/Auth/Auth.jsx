@@ -12,11 +12,7 @@ const Auth = () => {
         <img src={Logo} className="w-[240px] lg:w-[280px]" alt="Jomnay Logo" />
       </div>
 
-      <div
-        className={`flex-1 flex items-center justify-center mx-5 ${
-          swap ? "-order-2" : ""
-        }`}
-      >
+      <div className="flex-1 flex items-center justify-center mx-5">
         <div className="w-full transition duration-300 sm:w-[368px] py-[40px] px-[20px] rounded-[8px]">
           <h3 className="text-center underline decoration-[#EFBB5E] decoration-2 underline-offset-[4px] mb-[30px] lg:mb-[40px] font-semibold text-[32px] text-[#E5B35A]">
             {swap ? "Register" : "Login"}
