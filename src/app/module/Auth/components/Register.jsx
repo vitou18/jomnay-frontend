@@ -5,7 +5,7 @@ import useAuth from "../core/action";
 import toast from "react-hot-toast";
 import Logo from "../../../../_template/assets/img/big_logo.png";
 
-const Register = ({ swap, setSwap }) => {
+const Register = () => {
   const { onChangeRegister, register, onRegister, navigate } = useAuth();
 
   let { fullName, email, password } = register;
@@ -19,7 +19,7 @@ const Register = ({ swap, setSwap }) => {
     }
 
     onRegister();
-    setSwap(!swap);
+    navigate("/login");
   };
 
   // console.log(register);

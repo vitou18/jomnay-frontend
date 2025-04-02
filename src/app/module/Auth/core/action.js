@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { reqLogin, reqRegister } from "./request";
 import {
+  resetRegister,
   setAccessToken,
   setLogin,
   setLogout,
@@ -45,6 +46,7 @@ const useAuth = () => {
       .then((res) => {
         // console.log(res);
         toast.success("Registration successful");
+        dispatch(resetRegister());
       })
       .catch((e) => {
         // console.log(e);

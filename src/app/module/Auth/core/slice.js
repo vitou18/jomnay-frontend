@@ -50,10 +50,14 @@ const authSlice = createSlice({
 
       state.register[data.name] = data.value;
     },
+
+    resetRegister: (state) => {
+      state.register = createUser;
+    },
   },
 });
 
-export const { setAccessToken, setProfile, setLogin, setLogout, setRegister } =
+export const { setAccessToken, setProfile, setLogin, setLogout, setRegister, resetRegister } =
   authSlice.actions;
 
 export default authSlice.reducer;
