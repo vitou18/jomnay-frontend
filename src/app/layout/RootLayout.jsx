@@ -22,7 +22,7 @@ const RootLayout = () => {
     <div className="font-popins">
       <Sidebar logo={logo} onLogout={onLogout} sidebarItems={sidebarItems} />
 
-      <main className="transition duration-500 md:ml-[260px] p-[40px]">
+      <main className="transition duration-500 md:ml-[260px]">
         <Outlet />
       </main>
     </div>
