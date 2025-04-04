@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../../layout/components/Container";
+import useIncome from "./core/action";
 
 const Income = () => {
+  const { fetchIncome, income } = useIncome();
+
+  useEffect(() => {
+    fetchIncome();
+  }, []);
+
+  console.log(income);
+
   return (
     <Container title="Income">
       <div className="w-full h-[250px] bg-amber-50"></div>
