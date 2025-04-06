@@ -9,6 +9,7 @@ import {
   RiHome2Line,
   RiWalletLine,
 } from "react-icons/ri";
+import useLayout from "./core/action";
 
 const sidebarItems = [
   { path: "/", name: "Dashboard", icon: <RiHome2Line /> },
@@ -17,6 +18,8 @@ const sidebarItems = [
 ];
 
 const RootLayout = () => {
+  const { onLogout } = useAuth();
+  const { sideBarShow } = useLayout();
   const location = useLocation();
   const [loading, setLoading] = useState(false);
 
@@ -25,16 +28,24 @@ const RootLayout = () => {
     const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
   }, [location]);
-  const { onLogout } = useAuth();
 
   return (
     <div className="font-popins">
-      <Sidebar logo={logo} onLogout={onLogout} sidebarItems={sidebarItems} />
+      <Sidebar
+        sideBarShow={sideBarShow}
+        logo={logo}
+        onLogout={onLogout}
+        sidebarItems={sidebarItems}
+      />
 
-      <main className="transition relative duration-500 md:ml-[260px]">
+      <div
+        className={`transition-all relative duration-300 ${
+          sideBarShow ? "md:ml-0" : "md:ml-[260px]"
+        }`}
+      >
         {loading && <Loader />}
         <Outlet />
-      </main>
+      </div>
     </div>
   );
 };
