@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Container from "../../layout/components/Container";
 import useDashboard from "./core/action";
+import CardInfo from "./components/CardInfo";
 
 const Dashboard = () => {
   const { dashboard, fetchDashboard } = useDashboard();
@@ -9,11 +10,11 @@ const Dashboard = () => {
     fetchDashboard();
   }, []);
 
-  console.log(dashboard);
+  // console.log(dashboard);
 
   return (
     <Container title="Dashboard">
-      <div className="w-full h-[250px] bg-amber-50"></div>
+      <CardInfo data={dashboard} />
       <div className="w-full h-[250px] bg-amber-200"></div>
       <div className="w-full h-[250px] bg-amber-300"></div>
       <div className="w-full h-[250px] bg-amber-400"></div>

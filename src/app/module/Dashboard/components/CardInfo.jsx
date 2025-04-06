@@ -13,16 +13,19 @@ const CardInfo = ({ data }) => {
     {
       icon: RiBarChart2Line,
       title: "Total Balance",
+      style: "blue",
       balance: formatNumber(data?.totalBalance),
     },
     {
       icon: RiWalletLine,
       title: "Total Income",
+      style: "green",
       balance: formatNumber(data?.totalIncome),
     },
     {
       icon: RiExchangeDollarLine,
       title: "Total Expense",
+      style: "red",
       balance: formatNumber(data?.totalExpense),
     },
   ];
@@ -35,6 +38,7 @@ const CardInfo = ({ data }) => {
           icon={item.icon}
           title={item.title}
           balance={item.balance}
+          style={item.style}
         />
       ))}
     </section>

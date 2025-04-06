@@ -18,7 +18,7 @@ const useDashboard = () => {
   };
 
   return {
-    dashboard,
+    ...dashboard,
     navigate,
     fetchDashboard,
   };
