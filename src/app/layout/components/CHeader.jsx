@@ -17,7 +17,7 @@ const CHeader = ({ title }) => {
 
   return (
     <header
-      className={`bg-[#FFF] flex items-center gap-x-[15px] z-40 p-[20px] md:p-[40px] sticky top-0 transition-shadow duration-300 ${
+      className={`bg-[#FFF] flex items-center gap-x-[15px] z-40 p-[20px] md:p-[20px] sticky top-0 transition-shadow duration-300 ${
         scrolled ? "shadow-[0_0_16px_-4px_rgba(0,0,0,0.07)]" : ""
       }`}
     >
