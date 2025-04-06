@@ -21,8 +21,11 @@ const CHeader = ({ title }) => {
         scrolled ? "shadow-[0_0_16px_-4px_rgba(0,0,0,0.07)]" : ""
       }`}
     >
-      <span onClick={onToggleSidebar} className="cursor-pointer">
-        <RiMenuFill className="hidden text-[#3A3A3A] text-[32px] md:block" />
+      <span
+        onClick={onToggleSidebar}
+        className="cursor-pointer hidden text-[#3A3A3A] p-2 text-[32px] md:block transition-all duration-300 hover:bg-gray-100 rounded-[6px]"
+      >
+        <RiMenuFill />
       </span>
       <h2 className="text-[18px] text-[#3A3A3A] font-medium md:text-[24px]">
         {title}
