@@ -11,15 +11,16 @@ import {
 } from "./slice";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const useAuth = () => {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
   const onLogin = async (payload) => {
-    setLoading(true); 
+    setLoading(true);
     return reqLogin(payload)
       .then((res) => {
         dispatch(setProfile(res.data.user));
@@ -30,7 +31,7 @@ const useAuth = () => {
         toast.error("Invalid credentials");
       })
       .finally(() => {
-        setLoading(false); 
+        setLoading(false);
       });
   };
 
@@ -38,8 +39,29 @@ const useAuth = () => {
     dispatch(setLogin({ name: e.target.name, value: e.target.value }));
 
   const onLogout = () => {
-    dispatch(setLogout());
-    navigate("/login");
+    Swal.fire({
+      title: "Confirm Logout",
+      text: "Are you sure you want to log out? You will need to log in again.",
+      icon: "warning",
+      background: "#fff",
+      color: "#3a3a3a",
+      showCancelButton: true,
+      confirmButtonColor: "#DC2626",
+      confirmButtonText: "Logout",
+      cancelButtonColor: "gray",
+      cancelButtonText: "Cancel",
+      customClass: {
+        popup: "rounded-lg", 
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(setProfile({}));
+        localStorage.removeItem("user");
+        localStorage.removeItem("access_token");
+        dispatch(setLogout());
+        navigate("/login");
+      }
+    });
   };
 
   const onChangeRegister = (e) =>

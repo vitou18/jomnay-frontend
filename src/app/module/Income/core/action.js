@@ -46,7 +46,7 @@ const useIncome = () => {
       await reqCreateIncome(data);
       toast.success("Income added...");
       onResetAdd();
-      navigate("/income");
+      fetchIncome();
     } catch {
       toast.error("Error adding income");
     } finally {

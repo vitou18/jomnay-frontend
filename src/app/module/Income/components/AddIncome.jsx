@@ -18,7 +18,6 @@ const AddIncome = ({ onClick }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
       <div className="bg-white w-full mx-5 md:mx-0 max-w-md p-6 rounded-lg shadow-lg relative">
-        {/* Header */}
         <div className="flex items-center gap-2 mb-10">
           <Icon style="green" icon={RiWalletLine} />
           <h3 className="text-lg md:text-2xl font-semibold text-gray-800">
@@ -26,7 +25,6 @@ const AddIncome = ({ onClick }) => {
           </h3>
         </div>
 
-        {/* Close Button */}
         <div
           className="absolute top-5 right-5 text-xl cursor-pointer"
           onClick={onClick}
@@ -34,7 +32,6 @@ const AddIncome = ({ onClick }) => {
           <RiCloseLargeLine />
         </div>
 
-        {/* Form */}
         <form onSubmit={onSubmit}>
           <Input
             placeholder="Enter your category"
@@ -63,7 +60,7 @@ const AddIncome = ({ onClick }) => {
           />
 
           <Button
-            text={loading ? "Saving..." : "Add Income"}
+            text={loading ? "Adding Income..." : "Add Income"}
             type="submit"
             disabled={loading}
           />
