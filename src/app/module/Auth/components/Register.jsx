@@ -19,7 +19,6 @@ const Register = () => {
     }
 
     onRegister();
-    navigate("/login");
   };
 
   // console.log(register);
@@ -33,7 +32,7 @@ const Register = () => {
       <div className="transition duration-300 bg-[#F8F8F8] flex-1/3 flex items-center justify-center px-5">
         <div className="w-full sm:w-max py-[40px] px-[20px] rounded-[8px]">
           <h3 className="text-center underline decoration-[#3A3A3A] decoration-2 underline-offset-[4px] mb-[30px] lg:mb-[40px] font-semibold text-[32px] text-[#3A3A3A]">
-            Create your new account.
+            Create Account Now
           </h3>
 
           <form onSubmit={onSubmit}>
