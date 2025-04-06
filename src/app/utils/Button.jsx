@@ -3,7 +3,7 @@ import React from "react";
 const Button = ({ text, type, style, icon: Icon }) => {
   if (Icon && text === "Add") {
     return (
-      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#16A34A] hover:text-[#fff]">
+      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#16A34A] focus:bg-[#16A34A] hover:text-[#fff] focus:text-[#fff]">
         <span className="text-[18px]">
           <Icon />
         </span>
@@ -14,7 +14,7 @@ const Button = ({ text, type, style, icon: Icon }) => {
 
   if (Icon && text === "Download") {
     return (
-      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#EFBB5E] hover:text-[#fff]">
+      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#EFBB5E] focus:bg-[#EFBB5E] focus:text-[#fff] hover:text-[#fff]">
         <span className="text-[18px]">
           <Icon />
         </span>
@@ -25,7 +25,7 @@ const Button = ({ text, type, style, icon: Icon }) => {
 
   if (Icon && type === "delete") {
     return (
-      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#DC2626] hover:text-[#fff]">
+      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#DC2626] focus:bg-[#DC2626] focus:text-[#fff] hover:text-[#fff]">
         <span className="text-[18px]">
           <Icon />
         </span>

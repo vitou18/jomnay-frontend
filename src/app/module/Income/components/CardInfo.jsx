@@ -8,8 +8,8 @@ const CardInfo = ({ data }) => {
   const formattedDate = (date) => moment(date).format("Do MMM YYYY");
 
   return (
-    <article className="flex items-center justify-between">
-      <div className="flex items-center gap-x-[15px]">
+    <article className="flex items-center justify-between rounded-lg">
+      <div className="flex items-center gap-x-[5px] md:gap-x-[15px]">
         <Icon icon={RiWalletLine} />
 
         <div className="flex flex-col">
@@ -20,7 +20,7 @@ const CardInfo = ({ data }) => {
         </div>
       </div>
 
-      <div className="flex items-center gap-x-[10px] md:gap-x-[20px]">
+      <div className="flex items-center gap-x-[5px] md:gap-x-[20px]">
         <Tooltip type="income" amount={data?.amount} />
 
         <div className="flex items-center gap-x-[5px] md:gap-x-[10px]">

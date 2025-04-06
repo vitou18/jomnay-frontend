@@ -17,7 +17,7 @@ const AllIncome = ({ data }) => {
         </div>
       </header>
 
-      <div className="grid md:grid-cols-2 gap-x-[20px] gap-y-[20px] md:gap-x-[40px]">
+      <div className="grid md:grid-cols-2 gap-x-[20px] md:gap-y-[30px] gap-y-[20px] md:gap-x-[80px]">
         {data?.map((item) => {
           return <CardInfo data={item} />;
         })}
