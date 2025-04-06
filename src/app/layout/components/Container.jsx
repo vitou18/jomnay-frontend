@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import CHeader from "./CHeader";
 
 const Container = ({ title, children }) => {
   return (
     <div className="bg-[#F8F8F8]">
-      <header className="bg-[#FFF] p-[20px] md:p-[40px] sticky top-0">
-        <h2>{title}</h2>
-      </header>
+      <CHeader title={title} />
 
-      <div className="p-[20px] md:p-[40px]">{children}</div>
+      <main className="p-[20px] md:p-[40px]">{children}</main>
     </div>
   );
 };

@@ -1,7 +1,12 @@
 import axios from "axios";
 
+const isLocal = window.location.hostname === "localhost";
+const fallbackURL = isLocal
+  ? "http://localhost:8000/api/v1"
+  : "http://192.168.88.78:8000/api/v1";
+
 export const setUpAxios = () => {
-  axios.defaults.baseURL = "http://localhost:8000/api/v1/";
+  axios.defaults.baseURL = import.meta.env.VITE_API_URL || fallbackURL;
 
   axios.interceptors.request.use(function (config) {
     const accessToken = localStorage.getItem("access_token");
