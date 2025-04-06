@@ -3,6 +3,7 @@ import Button from "../../../utils/Button";
 import Input from "../../../utils/Input";
 import useAuth from "../core/action";
 import Logo from "../../../../_template/assets/img/big_logo.png";
+import { RiMailLine } from "react-icons/ri";
 
 const Login = () => {
   const { onLogin, onChangeLogin, login, navigate } = useAuth();
@@ -28,7 +29,7 @@ const Login = () => {
 
       <div className="transition duration-300 bg-[#FFFFFF] flex-1/3 flex items-center justify-center px-5">
         <div className="w-full sm:w-max py-[40px] px-[20px] rounded-[8px]">
-          <h3 className="text-center underline decoration-[#3A3A3A] decoration-2 underline-offset-[4px] mb-[30px] lg:mb-[40px] font-semibold text-[32px] text-[#3A3A3A]">
+          <h3 className="text-center tracking-widest underline decoration-[#3A3A3A] decoration-2 underline-offset-[4px] mb-[30px] lg:mb-[40px] font-semibold text-[32px] text-[#3A3A3A]">
             Login and Explore
           </h3>
           <form onSubmit={onSubmit}>
@@ -36,6 +37,7 @@ const Login = () => {
               name="email"
               value={email}
               type="email"
+              icon={RiMailLine}
               onChange={(e) => onChangeLogin(e)}
             />
 

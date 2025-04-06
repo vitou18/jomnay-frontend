@@ -4,6 +4,7 @@ import Button from "../../../utils/Button";
 import useAuth from "../core/action";
 import toast from "react-hot-toast";
 import Logo from "../../../../_template/assets/img/big_logo.png";
+import { RiMailLine, RiUserLine } from "react-icons/ri";
 
 const Register = () => {
   const { onChangeRegister, register, onRegister, navigate } = useAuth();
@@ -41,6 +42,7 @@ const Register = () => {
               name="fullName"
               onChange={(e) => onChangeRegister(e)}
               type="text"
+              icon={RiUserLine}
               value={fullName}
             />
 
@@ -49,6 +51,7 @@ const Register = () => {
               name="email"
               type="email"
               mt
+              icon={RiMailLine}
               value={email}
               onChange={(e) => onChangeRegister(e)}
             />
