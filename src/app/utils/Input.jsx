@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  RiLockLine,
-  RiLockUnlockLine,
-  RiMailLine,
-  RiUserLine,
-} from "react-icons/ri";
+import { RiLockLine, RiLockUnlockLine } from "react-icons/ri";
 
 const Input = ({
   name,
