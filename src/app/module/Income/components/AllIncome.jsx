@@ -7,7 +7,7 @@ import AddIncome from "./AddIncome";
 const AllIncome = ({ data }) => {
   const [showAdd, setShowAdd] = useState(false);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">

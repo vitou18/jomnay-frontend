@@ -6,30 +6,36 @@ import Button from "../../../utils/Button";
 import useIncome from "../core/action";
 
 const AddIncome = ({ onClick }) => {
-  const { onChangeAdd, onResetAdd, incomeInfo } = useIncome();
+  const { onChangeAdd, incomeInfo, onCreateIncome, loading } = useIncome();
+  const { category, amount, date } = incomeInfo;
 
-  let { category, amount, date } = incomeInfo;
-
-  console.log(incomeInfo);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await onCreateIncome();
+    onClick();
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
-      <div className="bg-[#fff] w-full mx-[20px] md:mx-0 max-w-md p-6 rounded-lg shadow-lg relative">
-        <div className="flex gap-x-[10px] items-center mb-[40px]">
+      <div className="bg-white w-full mx-5 md:mx-0 max-w-md p-6 rounded-lg shadow-lg relative">
+        {/* Header */}
+        <div className="flex items-center gap-2 mb-10">
           <Icon style="green" icon={RiWalletLine} />
-          <h3 className="text-[18px] md:text-[24px] font-semibold text-gray-800">
+          <h3 className="text-lg md:text-2xl font-semibold text-gray-800">
             Add Income
           </h3>
         </div>
 
+        {/* Close Button */}
         <div
-          className="absolute top-5 text-[18px] md:text-[24px] right-5 cursor-pointer"
+          className="absolute top-5 right-5 text-xl cursor-pointer"
           onClick={onClick}
         >
           <RiCloseLargeLine />
         </div>
 
-        <form>
+        {/* Form */}
+        <form onSubmit={onSubmit}>
           <Input
             placeholder="Enter your category"
             name="category"
@@ -56,7 +62,11 @@ const AddIncome = ({ onClick }) => {
             onChange={onChangeAdd}
           />
 
-          <Button text="Add Income" />
+          <Button
+            text={loading ? "Saving..." : "Add Income"}
+            type="submit"
+            disabled={loading}
+          />
         </form>
       </div>
     </div>
