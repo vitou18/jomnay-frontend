@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { RiAddLine, RiDownloadLine } from "react-icons/ri";
 import Button from "../../../utils/Button";
 import CardInfo from "./CardInfo";
+import AddIncome from "./AddIncome";
 
 const AllIncome = ({ data }) => {
+  const [showAdd, setShowAdd] = useState(false);
+
   console.log(data);
 
   return (
@@ -13,7 +16,11 @@ const AllIncome = ({ data }) => {
 
         <div className="flex items-center gap-x-[10px]">
           <Button text="Download" icon={RiDownloadLine} />
-          <Button text="Add" icon={RiAddLine} />
+          <Button
+            text="Add"
+            onClick={() => setShowAdd(!showAdd)}
+            icon={RiAddLine}
+          />
         </div>
       </header>
 
@@ -22,6 +29,8 @@ const AllIncome = ({ data }) => {
           return <CardInfo data={item} />;
         })}
       </div>
+
+      {showAdd && <AddIncome onClick={() => setShowAdd(!showAdd)} />}
     </section>
   );
 };

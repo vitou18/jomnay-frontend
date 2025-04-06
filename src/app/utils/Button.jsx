@@ -1,9 +1,12 @@
 import React from "react";
 
-const Button = ({ text, type, style, icon: Icon }) => {
+const Button = ({ text, type, style, icon: Icon, onClick }) => {
   if (Icon && text === "Add") {
     return (
-      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#16A34A] focus:bg-[#16A34A] hover:text-[#fff] focus:text-[#fff]">
+      <button
+        onClick={onClick}
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#16A34A] focus:bg-[#16A34A] hover:text-[#fff] focus:text-[#fff]"
+      >
         <span className="text-[18px]">
           <Icon />
         </span>

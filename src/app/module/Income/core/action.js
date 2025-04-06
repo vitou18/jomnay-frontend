@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { reqGetIncome } from "./request";
-import { setIncome } from "./slice";
+import { resetIncomeInfo, setIncome, setIncomeInfo } from "./slice";
 
 const useIncome = () => {
   const income = useSelector((state) => state.income);
@@ -17,7 +17,12 @@ const useIncome = () => {
       .catch((e) => console.log(e));
   };
 
-  return { ...income, fetchIncome, navigate };
+  const onChangeAdd = (e) =>
+    dispatch(setIncomeInfo({ name: e.target.name, value: e.target.value }));
+
+  const onResetAdd = () => dispatch(resetIncomeInfo());
+
+  return { ...income, fetchIncome, navigate, onChangeAdd, onResetAdd };
 };
 
 export default useIncome;

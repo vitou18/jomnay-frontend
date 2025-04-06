@@ -2,7 +2,7 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className="w-full h-screen flex items-center justify-center absolute top-0 left-0 z-30 bg-white/80 backdrop-blur-md">
+    <div className="w-full h-screen flex items-center justify-center absolute top-0 left-0 z-20 bg-white/80 backdrop-blur-md">
       <div className="relative flex items-center justify-center w-10 h-10 border-[4px] border-[#EFBB5E]/40 rounded-full shadow-md shadow-[#EFBB5E]/20 inset-shadow">
         <span className="absolute w-2 h-2 bg-[#EFBB5E] rounded-full shadow-dot animate-orbit [animation-delay:0.02s]"></span>
         <span className="absolute w-2 h-2 bg-[#EFBB5E] rounded-full shadow-dot animate-orbit [animation-delay:0.04s]"></span>
