@@ -7,8 +7,8 @@ import Logo from "../../../../_template/assets/img/big_logo.png";
 import { RiMailLine, RiUserLine } from "react-icons/ri";
 
 const Register = () => {
-  const { onChangeRegister, register, onRegister, navigate } = useAuth();
-
+  const { onChangeRegister, register, onRegister, navigate, loading } =
+    useAuth();
   let { fullName, email, password } = register;
 
   const onSubmit = (e) => {
@@ -21,8 +21,6 @@ const Register = () => {
 
     onRegister();
   };
-
-  // console.log(register);
 
   return (
     <div className="w-full flex min-h-screen font-popins">
@@ -40,7 +38,7 @@ const Register = () => {
             <Input
               placeholder="Enter your full name"
               name="fullName"
-              onChange={(e) => onChangeRegister(e)}
+              onChange={onChangeRegister}
               type="text"
               icon={RiUserLine}
               value={fullName}
@@ -53,7 +51,7 @@ const Register = () => {
               mt
               icon={RiMailLine}
               value={email}
-              onChange={(e) => onChangeRegister(e)}
+              onChange={onChangeRegister}
             />
 
             <Input
@@ -62,10 +60,14 @@ const Register = () => {
               type="password"
               mt
               value={password}
-              onChange={(e) => onChangeRegister(e)}
+              onChange={onChangeRegister}
             />
 
-            <Button text="Register" type="submit" />
+            <Button
+              text={loading ? "Registering..." : "Register"}
+              type="submit"
+              disabled={loading}
+            />
           </form>
 
           <p className="text-center mt-[20px] lg-[mt-30px] text-[#696969]">

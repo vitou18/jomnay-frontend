@@ -10,23 +10,27 @@ import {
   setRegister,
 } from "./slice";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const useAuth = () => {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false); 
 
   const onLogin = async (payload) => {
+    setLoading(true); 
     return reqLogin(payload)
       .then((res) => {
-        // console.log(res.data);
         dispatch(setProfile(res.data.user));
         dispatch(setAccessToken(res.data.token));
         navigate("/");
       })
       .catch((e) => {
-        // console.log(e);
         toast.error("Invalid credentials");
+      })
+      .finally(() => {
+        setLoading(false); 
       });
   };
 
@@ -41,22 +45,25 @@ const useAuth = () => {
   const onChangeRegister = (e) =>
     dispatch(setRegister({ name: e.target.name, value: e.target.value }));
 
-  const onRegister = async (e) => {
+  const onRegister = async () => {
+    setLoading(true);
     return reqRegister(auth.register)
-      .then((res) => {
-        // console.log(res);
+      .then(() => {
         toast.success("Registration successful");
         dispatch(resetRegister());
       })
-      .catch((e) => {
-        // console.log(e);
+      .catch(() => {
         toast.error("Registration failed");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   return {
     ...auth,
     navigate,
+    loading,
     onLogin,
     onChangeLogin,
     onLogout,

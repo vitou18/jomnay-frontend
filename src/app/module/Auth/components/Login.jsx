@@ -6,8 +6,7 @@ import Logo from "../../../../_template/assets/img/big_logo.png";
 import { RiMailLine } from "react-icons/ri";
 
 const Login = () => {
-  const { onLogin, onChangeLogin, login, navigate } = useAuth();
-
+  const { onLogin, onChangeLogin, login, navigate, loading } = useAuth();
   let { email, password } = login;
 
   const onSubmit = (e) => {
@@ -38,7 +37,7 @@ const Login = () => {
               value={email}
               type="email"
               icon={RiMailLine}
-              onChange={(e) => onChangeLogin(e)}
+              onChange={onChangeLogin}
             />
 
             <Input
@@ -46,11 +45,16 @@ const Login = () => {
               type="password"
               mt
               value={password}
-              onChange={(e) => onChangeLogin(e)}
+              onChange={onChangeLogin}
             />
 
-            <Button type="submit" text="Login" />
+            <Button
+              type="submit"
+              text={loading ? "Logging in..." : "Login"}
+              disabled={loading}
+            />
           </form>
+
           <p className="text-center mt-[20px] lg-[mt-30px] text-[#696969]">
             Don't have an account?{" "}
             <span
