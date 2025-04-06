@@ -3,7 +3,7 @@ import CHeader from "./CHeader";
 
 const Container = ({ title, children }) => {
   return (
-    <div className="bg-[#F8F8F8]">
+    <div className="bg-[#F8F8F8] min-h-screen">
       <CHeader title={title} />
 
       <main className="p-[20px] md:p-[40px] flex flex-col gap-y-[30px]">

@@ -34,6 +34,15 @@ const Icon = ({ icon: Icon, style }) => {
       </div>
     );
   }
+  return (
+    <div
+      className={`w-[45px] md:w-[60px] md:h-[60px] text-[20px] md:text-[24px] rounded-full grid place-items-center h-[45px]
+        bg-[#3A3A3A]/5 text-[#3A3A3A]
+      `}
+    >
+      <Icon />
+    </div>
+  );
 };
 
 export default Icon;

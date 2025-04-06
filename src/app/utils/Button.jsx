@@ -1,6 +1,48 @@
 import React from "react";
 
-const Button = ({ text, type, style }) => {
+const Button = ({ text, type, style, icon: Icon }) => {
+  if (Icon && text === "Add") {
+    return (
+      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#16A34A] hover:text-[#fff]">
+        <span className="text-[18px]">
+          <Icon />
+        </span>
+        <span className="hidden md:inline">{text}</span>
+      </button>
+    );
+  }
+
+  if (Icon && text === "Download") {
+    return (
+      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#EFBB5E] hover:text-[#fff]">
+        <span className="text-[18px]">
+          <Icon />
+        </span>
+        <span className="hidden md:inline">{text}</span>
+      </button>
+    );
+  }
+
+  if (Icon && type === "delete") {
+    return (
+      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#DC2626] hover:text-[#fff]">
+        <span className="text-[18px]">
+          <Icon />
+        </span>
+      </button>
+    );
+  }
+
+  if (Icon && type === "edit") {
+    return (
+      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#2563EB] hover:text-[#fff]">
+        <span className="text-[18px]">
+          <Icon />
+        </span>
+      </button>
+    );
+  }
+
   if (style === "second") {
     return (
       <button
