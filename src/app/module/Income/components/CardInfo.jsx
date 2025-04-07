@@ -4,8 +4,14 @@ import moment from "moment/moment";
 import Tooltip from "../../../layout/components/Tooltip";
 import Button from "../../../utils/Button";
 
-const CardInfo = ({ data }) => {
+const CardInfo = ({ data, onDelete }) => {
   const formattedDate = (date) => moment(date).format("Do MMM YYYY");
+
+  const onClickDelete = (id, category) => {
+    // console.log(id, category);
+
+    onDelete(id, category);
+  };
 
   return (
     <article className="flex items-center justify-between rounded-lg">
@@ -25,7 +31,11 @@ const CardInfo = ({ data }) => {
 
         <div className="flex items-center gap-x-[5px] md:gap-x-[10px]">
           <Button icon={RiEditLine} type="edit" />
-          <Button icon={RiDeleteBin7Line} type="delete" />
+          <Button
+            onClick={() => onClickDelete(data?._id, data?.category)}
+            icon={RiDeleteBin7Line}
+            type="delete"
+          />
         </div>
       </div>
     </article>

@@ -28,7 +28,10 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
 
   if (Icon && type === "delete") {
     return (
-      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#DC2626] focus:bg-[#DC2626] focus:text-[#fff] hover:text-[#fff]">
+      <button
+        onClick={onClick}
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#DC2626] focus:bg-[#DC2626] focus:text-[#fff] hover:text-[#fff]"
+      >
         <span className="text-[18px]">
           <Icon />
         </span>
