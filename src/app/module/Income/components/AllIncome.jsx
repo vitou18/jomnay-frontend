@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import { RiAddLine, RiDownloadLine } from "react-icons/ri";
+import React from "react";
+import { RiAddLine } from "react-icons/ri";
 import Button from "../../../utils/Button";
 import CardInfo from "./CardInfo";
-import AddIncome from "./AddIncome";
 import useIncome from "../core/action";
 
 const AllIncome = ({ data }) => {
-  const { onDeleteIncome } = useIncome();
-  const [showAdd, setShowAdd] = useState(false);
+  const { onDeleteIncome, navigate } = useIncome();
 
   return (
     <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
@@ -15,10 +13,9 @@ const AllIncome = ({ data }) => {
         <h3 className="text-[18px] md:text-[20px] font-medium">Recent List</h3>
 
         <div className="flex items-center gap-x-[10px]">
-          <Button text="Download" icon={RiDownloadLine} />
           <Button
             text="Add"
-            onClick={() => setShowAdd(!showAdd)}
+            onClick={() => navigate("/income/add")}
             icon={RiAddLine}
           />
         </div>
@@ -29,8 +26,6 @@ const AllIncome = ({ data }) => {
           <CardInfo key={item._id} data={item} onDelete={onDeleteIncome} />
         ))}
       </div>
-
-      {showAdd && <AddIncome onClick={() => setShowAdd(!showAdd)} />}
     </section>
   );
 };

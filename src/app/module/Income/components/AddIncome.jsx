@@ -1,72 +1,60 @@
 import React from "react";
 import Icon from "../../../layout/components/Icon";
-import { RiCloseLargeLine, RiWalletLine } from "react-icons/ri";
+import { RiWalletLine } from "react-icons/ri";
 import Input from "../../../utils/Input";
 import Button from "../../../utils/Button";
 import useIncome from "../core/action";
+import Container from "../../../layout/components/Container";
 
-const AddIncome = ({ onClick }) => {
-  const { onChangeAdd, incomeInfo, onCreateIncome, loading } = useIncome();
+const AddIncome = () => {
+  const { onChangeAdd, incomeInfo, navigate, onCreateIncome, loading } =
+    useIncome();
   const { category, amount, date } = incomeInfo;
 
   const onSubmit = async (e) => {
     e.preventDefault();
     await onCreateIncome();
-    onClick();
+    navigate("/income");
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
-      <div className="bg-white w-full mx-5 md:mx-0 max-w-md p-6 rounded-lg shadow-lg relative">
-        <div className="flex items-center gap-2 mb-10">
-          <Icon style="green" icon={RiWalletLine} />
-          <h3 className="text-lg md:text-2xl font-semibold text-gray-800">
-            Add Income
-          </h3>
-        </div>
-
-        <div
-          className="absolute top-5 right-5 text-xl cursor-pointer"
-          onClick={onClick}
-        >
-          <RiCloseLargeLine />
-        </div>
-
+    <Container title="Income - Add" navigate={navigate}>
+      <div className="bg-[#fff] shadow-[0_0_8px_0_rgba(0,0,0,0.09)] rounded-lg p-[20px]">
         <form onSubmit={onSubmit}>
-          <Input
-            placeholder="Enter your category"
-            name="category"
-            type="text"
-            value={category}
-            onChange={onChangeAdd}
-          />
+          <div className="grid md:grid-cols-2 gap-y-[10px] md:gap-y-[20px] md:gap-x-[30px]">
+            <Input
+              placeholder="Enter your category"
+              name="category"
+              type="text"
+              value={category}
+              onChange={onChangeAdd}
+            />
 
-          <Input
-            placeholder="Enter your amount"
-            name="amount"
-            type="number"
-            value={amount}
-            mt
-            onChange={onChangeAdd}
-          />
+            <Input
+              placeholder="Enter your amount"
+              name="amount"
+              type="number"
+              value={amount}
+              onChange={onChangeAdd}
+            />
 
-          <Input
-            placeholder="Enter your date"
-            name="date"
-            type="date"
-            value={date}
-            mt
-            onChange={onChangeAdd}
-          />
+            <Input
+              placeholder="Enter your date"
+              name="date"
+              type="date"
+              value={date}
+              onChange={onChangeAdd}
+            />
 
-          <Button
-            text={loading ? "Adding Income..." : "Add Income"}
-            type="submit"
-            disabled={loading}
-          />
+            <Button
+              text={loading ? "Adding Income..." : "Add Income"}
+              type="submit"
+              disabled={loading}
+            />
+          </div>
         </form>
       </div>
-    </div>
+    </Container>
   );
 };
 

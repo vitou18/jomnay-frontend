@@ -5,7 +5,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#16A34A] focus:bg-[#16A34A] hover:text-[#fff] focus:text-[#fff]"
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#16A34A] focus:bg-[#16A34A] hover:text-[#fff] focus:text-[#fff]"
       >
         <span className="text-[18px]">
           <Icon />
@@ -17,7 +17,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
 
   if (Icon && text === "Download") {
     return (
-      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#EFBB5E] focus:bg-[#EFBB5E] focus:text-[#fff] hover:text-[#fff]">
+      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#EFBB5E] focus:bg-[#EFBB5E] focus:text-[#fff] hover:text-[#fff]">
         <span className="text-[18px]">
           <Icon />
         </span>
@@ -30,7 +30,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#DC2626] focus:bg-[#DC2626] focus:text-[#fff] hover:text-[#fff]"
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#DC2626] focus:bg-[#DC2626] focus:text-[#fff] hover:text-[#fff]"
       >
         <span className="text-[18px]">
           <Icon />
@@ -41,10 +41,21 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
 
   if (Icon && type === "edit") {
     return (
-      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#2563EB] hover:text-[#fff]">
+      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#2563EB] hover:text-[#fff]">
         <span className="text-[18px]">
           <Icon />
         </span>
+      </button>
+    );
+  }
+
+  if (text === "Back") {
+    return (
+      <button
+        onClick={onClick}
+        className="px-[15px] h-[36px] cursor-pointer bg-[#DC2626] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#CA2424] focus:bg-[#CA2424]"
+      >
+        <span>{text}</span>
       </button>
     );
   }
