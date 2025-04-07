@@ -59,6 +59,7 @@ const Register = () => {
               name="password"
               type="password"
               mt
+              icon
               value={password}
               onChange={onChangeRegister}
             />

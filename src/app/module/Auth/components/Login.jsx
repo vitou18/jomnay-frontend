@@ -44,6 +44,7 @@ const Login = () => {
               name="password"
               type="password"
               mt
+              icon
               value={password}
               onChange={onChangeLogin}
             />
