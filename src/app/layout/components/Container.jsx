@@ -6,7 +6,7 @@ const Container = ({ title, children }) => {
     <div className="bg-[#F8F8F8] min-h-screen">
       <CHeader title={title} />
 
-      <main className="p-[20px] md:p-[40px] flex flex-col gap-y-[30px]">
+      <main className="p-[20px] md:p-[30px] flex flex-col gap-y-[30px]">
         {children}
       </main>
     </div>
