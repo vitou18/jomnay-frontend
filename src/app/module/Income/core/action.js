@@ -29,8 +29,8 @@ const useIncome = () => {
     try {
       const res = await reqGetIncome();
       dispatch(setIncome(res.data));
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log("Error fetching income...");
     }
   };
 
@@ -103,7 +103,7 @@ const useIncome = () => {
       dispatch(setIncomeDetails(res.data));
       return res.data;
     } catch (e) {
-      console.log(e);
+      console.log("Error fetching income...");
     }
   };
 
