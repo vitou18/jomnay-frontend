@@ -9,6 +9,7 @@ const initIncome = {
 const initialState = {
   income: [],
   incomeInfo: initIncome,
+  incomeDetails: {},
 };
 
 const incomeSlice = createSlice({
@@ -25,10 +26,22 @@ const incomeSlice = createSlice({
     resetIncomeInfo: (state) => {
       state.incomeInfo = initIncome;
     },
+    setIncomeDetails: (state, action) => {
+      state.incomeDetails = action.payload;
+    },
+    setIncomeDetailsInfo: (state, action) => {
+      const { name, value } = action.payload;
+      state.incomeDetails[name] = value;
+    },
   },
 });
 
-export const { setIncome, setIncomeInfo, resetIncomeInfo } =
-  incomeSlice.actions;
+export const {
+  setIncome,
+  setIncomeInfo,
+  resetIncomeInfo,
+  setIncomeDetails,
+  setIncomeDetailsInfo,
+} = incomeSlice.actions;
 
 export default incomeSlice.reducer;

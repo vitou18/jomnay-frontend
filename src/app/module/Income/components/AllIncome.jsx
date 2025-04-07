@@ -23,7 +23,12 @@ const AllIncome = ({ data }) => {
 
       <div className="grid md:grid-cols-2 gap-x-[20px] md:gap-y-[30px] gap-y-[20px] md:gap-x-[80px]">
         {data?.map((item) => (
-          <CardInfo key={item._id} data={item} onDelete={onDeleteIncome} />
+          <CardInfo
+            key={item._id}
+            data={item}
+            navigate={navigate}
+            onDelete={onDeleteIncome}
+          />
         ))}
       </div>
     </section>

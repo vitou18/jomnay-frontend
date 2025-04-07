@@ -4,7 +4,7 @@ import moment from "moment/moment";
 import Tooltip from "../../../layout/components/Tooltip";
 import Button from "../../../utils/Button";
 
-const CardInfo = ({ data, onDelete }) => {
+const CardInfo = ({ data, onDelete, navigate }) => {
   const formattedDate = (date) => moment(date).format("Do MMM YYYY");
 
   const onClickDelete = (id, category) => {
@@ -30,7 +30,11 @@ const CardInfo = ({ data, onDelete }) => {
         <Tooltip type="income" amount={data?.amount} />
 
         <div className="flex items-center gap-x-[5px] md:gap-x-[10px]">
-          <Button icon={RiEditLine} type="edit" />
+          <Button
+            icon={RiEditLine}
+            type="edit"
+            onClick={() => navigate(`/income/edit/${data?._id}`)}
+          />
           <Button
             onClick={() => onClickDelete(data?._id, data?.category)}
             icon={RiDeleteBin7Line}

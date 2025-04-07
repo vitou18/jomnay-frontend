@@ -1,7 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reqCreateIncome, reqDeleteIncome, reqGetIncome } from "./request";
-import { resetIncomeInfo, setIncome, setIncomeInfo } from "./slice";
+import {
+  reqCreateIncome,
+  reqDeleteIncome,
+  reqGetIncome,
+  reqGetIncomeById,
+  reqUpdateIncome,
+} from "./request";
+import {
+  resetIncomeInfo,
+  setIncome,
+  setIncomeDetails,
+  setIncomeDetailsInfo,
+  setIncomeInfo,
+} from "./slice";
 import toast from "react-hot-toast";
 import moment from "moment";
 import { useState } from "react";
@@ -84,6 +96,37 @@ const useIncome = () => {
     });
   };
 
+  const fetchIncomeById = async (id) => {
+    try {
+      const res = await reqGetIncomeById(id);
+      // console.log(res);
+      dispatch(setIncomeDetails(res.data));
+      return res.data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const onChangeEdit = (e) => {
+    const { name, value } = e.target;
+    dispatch(setIncomeDetailsInfo({ name, value }));
+  };
+
+  const onUpdateIncome = async () => {
+    const data = income.incomeDetails;
+
+    setLoading(true);
+
+    try {
+      await reqUpdateIncome(data._id, data);
+      toast.success(`${data?.category} has been updated...`);
+    } catch {
+      toast.error("Error updating income");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     ...income,
     loading,
@@ -93,6 +136,9 @@ const useIncome = () => {
     onResetAdd,
     onCreateIncome,
     onDeleteIncome,
+    fetchIncomeById,
+    onChangeEdit,
+    onUpdateIncome,
   };
 };
 

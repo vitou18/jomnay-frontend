@@ -41,7 +41,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
 
   if (Icon && type === "edit") {
     return (
-      <button className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#2563EB] hover:text-[#fff]">
+      <button onClick={onClick} className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#696969] transition-all duration-300 hover:bg-[#2563EB] hover:text-[#fff]">
         <span className="text-[18px]">
           <Icon />
         </span>
