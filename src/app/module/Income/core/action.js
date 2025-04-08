@@ -1,23 +1,145 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reqGetIncome } from "./request";
-import { setIncome } from "./slice";
+import {
+  reqCreateIncome,
+  reqDeleteIncome,
+  reqGetIncome,
+  reqGetIncomeById,
+  reqUpdateIncome,
+} from "./request";
+import {
+  resetIncomeInfo,
+  setIncome,
+  setIncomeDetails,
+  setIncomeDetailsInfo,
+  setIncomeInfo,
+} from "./slice";
+import toast from "react-hot-toast";
+import moment from "moment";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const useIncome = () => {
   const income = useSelector((state) => state.income);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const fetchIncome = async () => {
-    return reqGetIncome()
-      .then((res) => {
-        // console.log(res);
-        dispatch(setIncome(res.data));
-      })
-      .catch((e) => console.log(e));
+    try {
+      const res = await reqGetIncome();
+      dispatch(setIncome(res.data));
+    } catch (e) {
+      console.log("Error fetching income...");
+    }
   };
 
-  return { ...income, fetchIncome, navigate };
+  const onChangeAdd = (e) =>
+    dispatch(setIncomeInfo({ name: e.target.name, value: e.target.value }));
+
+  const onResetAdd = () => dispatch(resetIncomeInfo());
+
+  const onCreateIncome = async () => {
+    const { category, amount, date } = income.incomeInfo;
+
+    if (!category || !amount || !date) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    const formattedDate = moment(date).toISOString();
+
+    const data = {
+      ...income.incomeInfo,
+      date: formattedDate,
+    };
+
+    setLoading(true);
+    try {
+      await reqCreateIncome(data);
+      toast.success("Income added...");
+      onResetAdd();
+      fetchIncome();
+    } catch {
+      toast.error("Error adding income");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const onDeleteIncome = async (id, category) => {
+    Swal.fire({
+      title: "Confirm Delete",
+      text: `Are you sure you want to delete ${category}?`,
+      icon: "warning",
+      background: "#fff",
+      color: "#3a3a3a",
+      showCancelButton: true,
+      cancelButtonColor: "gray",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#DC2626",
+      confirmButtonText: "Delete",
+      customClass: {
+        popup: "rounded-lg",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        reqDeleteIncome(id)
+          .then(() => {
+            toast.success(`${category} has been deleted...`);
+            fetchIncome();
+          })
+          .catch(() => {
+            toast.error("Error deleting income...");
+          });
+      }
+    });
+  };
+
+  const fetchIncomeById = async (id) => {
+    try {
+      const res = await reqGetIncomeById(id);
+      // console.log(res);
+      dispatch(setIncomeDetails(res.data));
+      return res.data;
+    } catch (e) {
+      console.log("Error fetching income...");
+    }
+  };
+
+  const onChangeEdit = (e) => {
+    const { name, value } = e.target;
+    dispatch(setIncomeDetailsInfo({ name, value }));
+  };
+
+  const onUpdateIncome = async () => {
+    const data = income.incomeDetails;
+
+    setLoading(true);
+
+    try {
+      await reqUpdateIncome(data._id, data);
+      toast.success(`${data?.category} has been updated...`);
+    } catch {
+      toast.error("Error updating income");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return {
+    ...income,
+    loading,
+    fetchIncome,
+    navigate,
+    onChangeAdd,
+    onResetAdd,
+    onCreateIncome,
+    onDeleteIncome,
+    fetchIncomeById,
+    onChangeEdit,
+    onUpdateIncome,
+  };
 };
 
 export default useIncome;

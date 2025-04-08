@@ -4,10 +4,11 @@ import Button from "../../../utils/Button";
 import useAuth from "../core/action";
 import toast from "react-hot-toast";
 import Logo from "../../../../_template/assets/img/big_logo.png";
+import { RiMailLine, RiUserLine } from "react-icons/ri";
 
 const Register = () => {
-  const { onChangeRegister, register, onRegister, navigate } = useAuth();
-
+  const { onChangeRegister, register, onRegister, navigate, loading } =
+    useAuth();
   let { fullName, email, password } = register;
 
   const onSubmit = (e) => {
@@ -19,10 +20,7 @@ const Register = () => {
     }
 
     onRegister();
-    navigate("/login");
   };
-
-  // console.log(register);
 
   return (
     <div className="w-full flex min-h-screen font-popins">
@@ -33,15 +31,16 @@ const Register = () => {
       <div className="transition duration-300 bg-[#F8F8F8] flex-1/3 flex items-center justify-center px-5">
         <div className="w-full sm:w-max py-[40px] px-[20px] rounded-[8px]">
           <h3 className="text-center underline decoration-[#3A3A3A] decoration-2 underline-offset-[4px] mb-[30px] lg:mb-[40px] font-semibold text-[32px] text-[#3A3A3A]">
-            Create your new account.
+            Create Account Now
           </h3>
 
           <form onSubmit={onSubmit}>
             <Input
               placeholder="Enter your full name"
               name="fullName"
-              onChange={(e) => onChangeRegister(e)}
+              onChange={onChangeRegister}
               type="text"
+              icon={RiUserLine}
               value={fullName}
             />
 
@@ -50,8 +49,9 @@ const Register = () => {
               name="email"
               type="email"
               mt
+              icon={RiMailLine}
               value={email}
-              onChange={(e) => onChangeRegister(e)}
+              onChange={onChangeRegister}
             />
 
             <Input
@@ -59,11 +59,16 @@ const Register = () => {
               name="password"
               type="password"
               mt
+              icon
               value={password}
-              onChange={(e) => onChangeRegister(e)}
+              onChange={onChangeRegister}
             />
 
-            <Button text="Register" type="submit" />
+            <Button
+              text={loading ? "Registering..." : "Register"}
+              type="submit"
+              disabled={loading}
+            />
           </form>
 
           <p className="text-center mt-[20px] lg-[mt-30px] text-[#696969]">
