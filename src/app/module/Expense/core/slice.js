@@ -30,6 +30,11 @@ const expenseSlice = createSlice({
     setExpenseDetails: (state, action) => {
       state.expenseDetails = action.payload;
     },
+    setExpenseDetailsInfo: (state, action) => {
+      const { name, value } = action.payload;
+
+      state.expenseDetails[name] = value;
+    },
   },
 });
 
@@ -38,6 +43,7 @@ export const {
   setExpenseInfo,
   resetExpenseInfo,
   setExpenseDetails,
+  setExpenseDetailsInfo,
 } = expenseSlice.actions;
 
 export default expenseSlice.reducer;

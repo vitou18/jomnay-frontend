@@ -8,3 +8,6 @@ export const reqCreateExpense = (payload) =>
 export const reqDeleteExpense = (id) => axios.delete(`/expense/delete/${id}`);
 
 export const reqGetExpenseById = (id) => axios.get(`/expense/${id}`);
+
+export const reqUpdateExpense = (id, payload) =>
+  axios.put(`/expense/edit/${id}`, payload);

@@ -5,11 +5,13 @@ import {
   reqDeleteExpense,
   reqGetExpense,
   reqGetExpenseById,
+  reqUpdateExpense,
 } from "./request";
 import {
   resetExpenseInfo,
   setExpense,
   setExpenseDetails,
+  setExpenseDetailsInfo,
   setExpenseInfo,
 } from "./slice";
 import { useState } from "react";
@@ -110,6 +112,26 @@ const useExpense = () => {
     }
   };
 
+  const onChangeEdit = (e) =>
+    dispatch(
+      setExpenseDetailsInfo({ name: e.target.name, value: e.target.value })
+    );
+
+  const onUpdateExpense = async () => {
+    const data = expense.expenseDetails;
+
+    setLoading(true);
+
+    try {
+      await reqUpdateExpense(data._id, data);
+      toast.success(`${data?.category} has been updated...`);
+    } catch {
+      toast.error("Error updating expense");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     fetchExpense,
     ...expense,
@@ -120,6 +142,8 @@ const useExpense = () => {
     loading,
     onDeleteExpense,
     fetchExpenseById,
+    onChangeEdit,
+    onUpdateExpense,
   };
 };
 
