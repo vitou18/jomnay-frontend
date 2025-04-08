@@ -1,12 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reqGetExpense } from "./request";
-import { setExpense } from "./slice";
+import { reqCreateExpense, reqGetExpense } from "./request";
+import { resetExpenseInfo, setExpense, setExpenseInfo } from "./slice";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import moment from "moment/moment";
 
 const useExpense = () => {
   const expense = useSelector((state) => state.expense);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const fetchExpense = async () => {
     return reqGetExpense()
@@ -19,7 +23,50 @@ const useExpense = () => {
       });
   };
 
-  return { fetchExpense, ...expense, navigate };
+  const onChangeAdd = (e) =>
+    dispatch(setExpenseInfo({ name: e.target.name, value: e.target.value }));
+
+  const onResetAdd = () => dispatch(resetExpenseInfo);
+
+  const onCreateExpense = async () => {
+    const { category, amount, date } = expense.expenseInfo;
+
+    if (!category || !amount || !date) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    const formattedDate = moment(date).toISOString();
+
+    const data = {
+      ...expense.expenseInfo,
+      date: formattedDate,
+    };
+
+    setLoading(true);
+
+    try {
+      await reqCreateExpense(data);
+
+      toast.success("Expense added...");
+      onResetAdd();
+      fetchExpense();
+    } catch {
+      toast.error("Error adding expense");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return {
+    fetchExpense,
+    ...expense,
+    navigate,
+    onChangeAdd,
+    onResetAdd,
+    onCreateExpense,
+    loading,
+  };
 };
 
 export default useExpense;

@@ -1,7 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initExpense = {
+  category: "",
+  amount: null,
+  date: "",
+};
+
 const initialState = {
   expense: [],
+  expenseInfo: initExpense,
 };
 
 const expenseSlice = createSlice({
@@ -11,9 +18,18 @@ const expenseSlice = createSlice({
     setExpense: (state, action) => {
       state.expense = action.payload;
     },
+    setExpenseInfo: (state, action) => {
+      const data = action.payload;
+
+      state.expenseInfo[data.name] = data.value;
+    },
+    resetExpenseInfo: (state) => {
+      state.expense = initExpense;
+    },
   },
 });
 
-export const { setExpense } = expenseSlice.actions;
+export const { setExpense, setExpenseInfo, resetExpenseInfo } =
+  expenseSlice.actions;
 
 export default expenseSlice.reducer;

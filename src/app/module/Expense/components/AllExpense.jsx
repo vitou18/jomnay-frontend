@@ -15,7 +15,7 @@ const AllExpense = ({ data }) => {
         <div className="flex items-center gap-x-[10px]">
           <Button
             text="Add"
-            onClick={''}
+            onClick={() => navigate("/expense/add")}
             icon={RiAddLine}
           />
         </div>
