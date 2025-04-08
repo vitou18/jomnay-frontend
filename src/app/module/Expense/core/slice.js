@@ -9,6 +9,7 @@ const initExpense = {
 const initialState = {
   expense: [],
   expenseInfo: initExpense,
+  expenseDetails: {},
 };
 
 const expenseSlice = createSlice({
@@ -26,10 +27,17 @@ const expenseSlice = createSlice({
     resetExpenseInfo: (state) => {
       state.expenseInfo = initExpense;
     },
+    setExpenseDetails: (state, action) => {
+      state.expenseDetails = action.payload;
+    },
   },
 });
 
-export const { setExpense, setExpenseInfo, resetExpenseInfo } =
-  expenseSlice.actions;
+export const {
+  setExpense,
+  setExpenseInfo,
+  resetExpenseInfo,
+  setExpenseDetails,
+} = expenseSlice.actions;
 
 export default expenseSlice.reducer;

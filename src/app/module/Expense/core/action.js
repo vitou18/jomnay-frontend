@@ -1,7 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reqCreateExpense, reqDeleteExpense, reqGetExpense } from "./request";
-import { resetExpenseInfo, setExpense, setExpenseInfo } from "./slice";
+import {
+  reqCreateExpense,
+  reqDeleteExpense,
+  reqGetExpense,
+  reqGetExpenseById,
+} from "./request";
+import {
+  resetExpenseInfo,
+  setExpense,
+  setExpenseDetails,
+  setExpenseInfo,
+} from "./slice";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import moment from "moment/moment";
@@ -88,6 +98,18 @@ const useExpense = () => {
     });
   };
 
+  const fetchExpenseById = async (id) => {
+    try {
+      const res = await reqGetExpenseById(id);
+
+      // console.log(res);
+      dispatch(setExpenseDetails(res.data));
+      return res.data;
+    } catch (e) {
+      console.log("Error fetching expense...");
+    }
+  };
+
   return {
     fetchExpense,
     ...expense,
@@ -97,6 +119,7 @@ const useExpense = () => {
     onCreateExpense,
     loading,
     onDeleteExpense,
+    fetchExpenseById,
   };
 };
 

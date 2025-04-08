@@ -8,6 +8,7 @@ import RootLayout from "../layout/RootLayout";
 import useAuth from "../module/Auth/core/action";
 import EditIncome from "../module/Income/components/EditIncome";
 import AddExpense from "../module/Expense/components/AddExpense";
+import EditExpense from "../module/Expense/components/EditExpense";
 
 const PrivateRoute = () => {
   const { accessToken } = useAuth();
@@ -24,6 +25,7 @@ const PrivateRoute = () => {
           <Route path="income/edit/:id" element={<EditIncome />} />
           <Route path="expense" element={<Expense />} />
           <Route path="expense/add" element={<AddExpense />} />
+          <Route path="expense/edit/:id" element={<EditExpense />} />
           <Route path="/*" element={<h1>Page not found!!</h1>} />
         </Route>
       </Routes>
