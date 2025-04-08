@@ -5,6 +5,7 @@ import logo from "../../_template/assets/img/small_logo.png";
 import useAuth from "../module/Auth/core/action";
 import Loader from "./components/Loader";
 import {
+  RiBarChart2Line,
   RiExchangeDollarLine,
   RiHome2Line,
   RiWalletLine,
@@ -14,6 +15,7 @@ const sidebarItems = [
   { path: "/", name: "Dashboard", icon: <RiHome2Line /> },
   { path: "/income", name: "Income", icon: <RiWalletLine /> },
   { path: "/expense", name: "Expense", icon: <RiExchangeDollarLine /> },
+  { path: "/report", name: "Report", icon: <RiBarChart2Line /> },
 ];
 
 const RootLayout = () => {
