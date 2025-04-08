@@ -1,10 +1,10 @@
 import { RiDeleteBin7Line, RiEditLine, RiWalletLine } from "react-icons/ri";
-import Icon from "../../../layout/components/Icon";
+import Icon from "./Icon";
 import moment from "moment/moment";
-import Tooltip from "../../../layout/components/Tooltip";
-import Button from "../../../utils/Button";
+import Tooltip from "./Tooltip";
+import Button from "../../utils/Button";
 
-const CardInfo = ({ data, onDelete, navigate }) => {
+const CardInfo = ({ data, onDelete, navigate, type }) => {
   const formattedDate = (date) => moment(date).format("Do MMM YYYY");
 
   const onClickDelete = (id, category) => {
@@ -27,13 +27,13 @@ const CardInfo = ({ data, onDelete, navigate }) => {
       </div>
 
       <div className="flex items-center gap-x-[5px] md:gap-x-[20px]">
-        <Tooltip type="income" amount={data?.amount} />
+        <Tooltip type={type} amount={data?.amount} />
 
         <div className="flex items-center gap-x-[5px] md:gap-x-[10px]">
           <Button
             icon={RiEditLine}
             type="edit"
-            onClick={() => navigate(`/income/edit/${data?._id}`)}
+            onClick={() => navigate(`/${type}/edit/${data?._id}`)}
           />
           <Button
             onClick={() => onClickDelete(data?._id, data?.category)}

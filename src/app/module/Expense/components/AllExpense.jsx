@@ -2,10 +2,10 @@ import React from "react";
 import { RiAddLine } from "react-icons/ri";
 import Button from "../../../utils/Button";
 import CardInfo from "../../../layout/components/CardInfo";
-import useIncome from "../core/action";
+import useExpense from "../core/action";
 
-const AllIncome = ({ data }) => {
-  const { onDeleteIncome, navigate } = useIncome();
+const AllExpense = ({ data }) => {
+  const { navigate } = useExpense();
 
   return (
     <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
@@ -15,7 +15,7 @@ const AllIncome = ({ data }) => {
         <div className="flex items-center gap-x-[10px]">
           <Button
             text="Add"
-            onClick={() => navigate("/income/add")}
+            onClick={''}
             icon={RiAddLine}
           />
         </div>
@@ -24,11 +24,11 @@ const AllIncome = ({ data }) => {
       <div className="grid md:grid-cols-2 gap-x-[20px] md:gap-y-[30px] gap-y-[20px] md:gap-x-[80px]">
         {data?.map((item) => (
           <CardInfo
-            type="income"
+            type="expense"
             key={item._id}
             data={item}
             navigate={navigate}
-            onDelete={onDeleteIncome}
+            onDelete={""}
           />
         ))}
       </div>
@@ -36,4 +36,4 @@ const AllIncome = ({ data }) => {
   );
 };
 
-export default AllIncome;
+export default AllExpense;

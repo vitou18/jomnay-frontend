@@ -19,7 +19,7 @@ const useExpense = () => {
       });
   };
 
-  return { fetchExpense, ...expense };
+  return { fetchExpense, ...expense, navigate };
 };
 
 export default useExpense;
