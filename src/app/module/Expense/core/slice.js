@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initExpense = {
   category: "",
-  amount: null,
+  amount: 0,
   date: "",
 };
 
@@ -24,7 +24,7 @@ const expenseSlice = createSlice({
       state.expenseInfo[data.name] = data.value;
     },
     resetExpenseInfo: (state) => {
-      state.expense = initExpense;
+      state.expenseInfo = initExpense;
     },
   },
 });

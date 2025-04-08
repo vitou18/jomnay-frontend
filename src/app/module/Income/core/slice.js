@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initIncome = {
   category: "",
-  amount: null,
+  amount: 0,
   date: "",
 };
 

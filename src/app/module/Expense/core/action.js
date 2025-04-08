@@ -27,7 +27,7 @@ const useExpense = () => {
   const onChangeAdd = (e) =>
     dispatch(setExpenseInfo({ name: e.target.name, value: e.target.value }));
 
-  const onResetAdd = () => dispatch(resetExpenseInfo);
+  const onResetAdd = () => dispatch(resetExpenseInfo());
 
   const onCreateExpense = async () => {
     const { category, amount, date } = expense.expenseInfo;
