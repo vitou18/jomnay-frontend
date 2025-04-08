@@ -5,7 +5,7 @@ import CardInfo from "../../../layout/components/CardInfo";
 import useExpense from "../core/action";
 
 const AllExpense = ({ data }) => {
-  const { navigate } = useExpense();
+  const { navigate, onDeleteExpense } = useExpense();
 
   return (
     <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
@@ -28,7 +28,7 @@ const AllExpense = ({ data }) => {
             key={item._id}
             data={item}
             navigate={navigate}
-            onDelete={""}
+            onDelete={onDeleteExpense}
           />
         ))}
       </div>

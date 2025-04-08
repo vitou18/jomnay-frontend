@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reqCreateExpense, reqGetExpense } from "./request";
+import { reqCreateExpense, reqDeleteExpense, reqGetExpense } from "./request";
 import { resetExpenseInfo, setExpense, setExpenseInfo } from "./slice";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import moment from "moment/moment";
+import Swal from "sweetalert2";
 
 const useExpense = () => {
   const expense = useSelector((state) => state.expense);
@@ -58,6 +59,35 @@ const useExpense = () => {
     }
   };
 
+  const onDeleteExpense = async (id, category) => {
+    Swal.fire({
+      title: "Confirm Delete",
+      text: `Are you sure you want to delete ${category}?`,
+      icon: "warning",
+      background: "#fff",
+      color: "#3a3a3a",
+      showCancelButton: true,
+      cancelButtonColor: "gray",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#DC2626",
+      confirmButtonText: "Delete",
+      customClass: {
+        popup: "rounded-lg",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        reqDeleteExpense(id)
+          .then(() => {
+            toast.success(`${category} has been deleted...`);
+            fetchExpense();
+          })
+          .catch(() => {
+            toast.error("Error deleting income...");
+          });
+      }
+    });
+  };
+
   return {
     fetchExpense,
     ...expense,
@@ -66,6 +96,7 @@ const useExpense = () => {
     onResetAdd,
     onCreateExpense,
     loading,
+    onDeleteExpense,
   };
 };
 
