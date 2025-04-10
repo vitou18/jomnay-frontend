@@ -5,7 +5,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#33363F] transition-all duration-300 hover:bg-[#16A34A] focus:bg-[#16A34A] hover:text-[#fff] focus:text-[#fff]"
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#3A3A3A] transition-all duration-300 hover:bg-[#16A34A] focus:bg-[#16A34A] hover:text-[#fff] focus:text-[#fff]"
       >
         <span className="text-[18px]">
           <Icon />
@@ -19,7 +19,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#33363F] transition-all duration-300 hover:bg-[#EFBB5E] focus:bg-[#EFBB5E] focus:text-[#fff] hover:text-[#fff]"
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#3A3A3A] transition-all duration-300 hover:bg-[#EFBB5E] focus:bg-[#EFBB5E] focus:text-[#fff] hover:text-[#fff]"
       >
         <span className="text-[18px]">
           <Icon />
@@ -33,7 +33,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#fff] rounded-lg text-[#33363F] transition-all duration-300 hover:bg-[#DC2626] focus:bg-[#DC2626] focus:text-[#fff] hover:text-[#fff]"
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#fff] rounded-lg text-[#3A3A3A] transition-all duration-300 hover:bg-[#DC2626] focus:bg-[#DC2626] focus:text-[#fff] hover:text-[#fff]"
       >
         <span className="text-[18px]">
           <Icon />
@@ -46,7 +46,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#fff] rounded-lg text-[#33363F] transition-all duration-300 hover:bg-[#2563EB] hover:text-[#fff]"
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#fff] rounded-lg text-[#3A3A3A] transition-all duration-300 hover:bg-[#2563EB] hover:text-[#fff]"
       >
         <span className="text-[18px]">
           <Icon />
