@@ -14,7 +14,7 @@ const AllExpense = ({ data }) => {
     setShow(true);
   };
 
-  console.log(selected);
+  // console.log(selected);
 
   const onDelete = () => {
     onDeleteExpense(selected.id, selected.category);
@@ -34,8 +34,8 @@ const AllExpense = ({ data }) => {
 
       {show && (
         <Modal
-          title="Delete Expense"
-          desc="Are you sure you want to delete this?"
+          title={`Delete ${selected.category}`}
+          desc="Are you sure you want to delete?"
           show={show}
           setShow={setShow}
           onDelete={onDelete}
