@@ -3,6 +3,7 @@ import useIncome from "../core/action";
 import HeaderTable from "../../../layout/components/HeaderTable";
 import CardContainer from "../../../layout/components/CardContainer";
 import Modal from "../../../layout/components/Modal";
+import TableContainer from "../../../layout/components/TableContainer";
 
 const AllIncome = ({ data }) => {
   const { onDeleteIncome, navigate } = useIncome();
@@ -29,6 +30,13 @@ const AllIncome = ({ data }) => {
         data={data}
         onDelete={onGetIdCard}
         navigate={navigate}
+        type="income"
+      />
+
+      <TableContainer
+        navigate={navigate}
+        onClickDelete={onGetIdCard}
+        data={data}
         type="income"
       />
 
