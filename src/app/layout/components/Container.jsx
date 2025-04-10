@@ -14,7 +14,7 @@ const Container = ({ title, children, navigate }) => {
   }, []);
 
   return (
-    <div className="bg-[#F8F8F8] min-h-screen">
+    <div className="bg-[#F8F8F8] min-h-screen pb-[120px] sm:pb-[0px]">
       <header
         className={`bg-[#FFF] flex items-center justify-between z-40 p-[20px] md:p-[30px] sticky top-0 transition-shadow duration-300 ${
           scrolled ? "shadow-[0_0_16px_-4px_rgba(0,0,0,0.07)]" : ""
