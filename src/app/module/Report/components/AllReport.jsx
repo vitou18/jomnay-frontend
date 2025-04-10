@@ -3,7 +3,7 @@ import { RiDownloadLine } from "react-icons/ri";
 import Button from "../../../utils/Button";
 import moment from "moment/moment";
 
-const AllReport = ({ navigate, data }) => {
+const AllReport = ({ data, onDownloadReport }) => {
   //   console.log(data);
 
   return (
@@ -15,7 +15,7 @@ const AllReport = ({ navigate, data }) => {
 
         <Button
           text="Download Excel"
-          onClick={() => navigate("/")}
+          onClick={onDownloadReport}
           icon={RiDownloadLine}
         />
       </header>

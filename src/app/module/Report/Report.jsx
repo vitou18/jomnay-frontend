@@ -4,7 +4,7 @@ import useReport from "./core/action";
 import AllReport from "./components/AllReport";
 
 const Report = () => {
-  const { report, fetchReport } = useReport();
+  const { report, fetchReport, onDownloadReport } = useReport();
 
   useEffect(() => {
     fetchReport();
@@ -14,7 +14,7 @@ const Report = () => {
 
   return (
     <Container title="Report">
-      <AllReport data={report} />
+      <AllReport data={report} onDownloadReport={onDownloadReport} />
     </Container>
   );
 };
