@@ -45,19 +45,19 @@ const AllReport = ({ data, onDownloadReport }) => {
             <tbody>
               {data?.map((item, index) => (
                 <tr key={item._id || index}>
-                  <td className="pe-[30px] py-[10px] text-[#000]/70">
+                  <td className="pe-[30px] text-[14px] py-[10px] text-[#000]/70">
                     {index + 1}
                   </td>
-                  <td className="px-[30px] py-[10px] text-[#000]/70">
+                  <td className="px-[30px] text-[14px] py-[10px] text-[#000]/70">
                     {item.type}
                   </td>
-                  <td className="px-[30px] py-[10px] text-[#000]/70">
+                  <td className="px-[30px] text-[14px] py-[10px] text-[#000]/70">
                     {item.category}
                   </td>
-                  <td className="px-[30px] py-[10px] text-[#000]/70">
+                  <td className="px-[30px] text-[14px] py-[10px] text-[#000]/70">
                     ${item.amount.toFixed(2)}
                   </td>
-                  <td className="px-[30px] py-[10px] text-[#000]/70">
+                  <td className="px-[30px] text-[14px] py-[10px] text-[#000]/70">
                     {item.date ? moment(item.date).format("YYYY-MM-DD") : ""}
                   </td>
                 </tr>
