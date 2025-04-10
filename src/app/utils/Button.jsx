@@ -59,7 +59,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="px-[15px] h-[36px] cursor-pointer bg-[#DC2626] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#CA2424] focus:bg-[#CA2424]"
+        className="px-[15px] text-[12px] md:text-[14px] h-[36px] cursor-pointer bg-[#DC2626] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#CA2424] focus:bg-[#CA2424]"
       >
         <span>{text}</span>
       </button>
