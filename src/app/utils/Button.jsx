@@ -5,7 +5,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#3A3A3A] transition-all duration-300 hover:bg-[#16A34A] focus:bg-[#16A34A] hover:text-[#fff] focus:text-[#fff]"
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#16A34A] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#149141] focus:bg-[#149141]"
       >
         <span className="text-[18px]">
           <Icon />
@@ -19,7 +19,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#f5f5f5] rounded-lg text-[#3A3A3A] transition-all duration-300 hover:bg-[#EFBB5E] focus:bg-[#EFBB5E] focus:text-[#fff] hover:text-[#fff]"
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#EFBB5E] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#E5B35A] focus:bg-[#E5B35A]"
       >
         <span className="text-[18px]">
           <Icon />

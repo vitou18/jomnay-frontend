@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 
 const Card = ({ icon, title, balance, style }) => {
   return (
-    <div className="bg-[#fff] min-w-[320px] rounded-lg shadow-[0_0_8px_0_rgba(0,0,0,0.05)] flex-1 flex items-center gap-x-[20px] p-[20px]">
+    <div className="bg-[#fff] min-w-[240px] rounded-lg shadow-[0_0_8px_0_rgba(0,0,0,0.05)] flex-1 flex items-center gap-x-[20px] p-[20px]">
       <Icon icon={icon} style={style} />
 
       <div className="flex flex-col">
