@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Menu = ({ sidebarItems }) => {
   return (
-    <ul className="flex md:flex-col gap-x-[20px] md:gap-y-[20px] md:justify-between">
+    <ul className="flex md:flex-col gap-x-[10px] md:gap-y-[20px] md:justify-between">
       {sidebarItems.map((item) => (
         <li key={item.name}>
           <NavLink

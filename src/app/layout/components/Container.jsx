@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../utils/Button";
 
-const Container = ({ title, children, navigate }) => {
+const Container = ({ title, children, navigate, onClick }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -24,13 +24,7 @@ const Container = ({ title, children, navigate }) => {
           {title}
         </h2>
 
-        {navigate && (
-          <Button
-            style="second"
-            text="Back"
-            onClick={() => navigate("/income")}
-          />
-        )}
+        {onClick && <Button style="second" text="Back" onClick={onClick} />}
       </header>
 
       <main className="p-[20px] md:p-[30px] flex flex-col gap-y-[30px]">

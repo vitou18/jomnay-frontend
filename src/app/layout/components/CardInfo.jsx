@@ -16,13 +16,11 @@ const CardInfo = ({ data, onDelete, navigate, type }) => {
   return (
     <article className="p-[15px] bg-[#f8f8f8] flex items-start justify-between rounded-lg">
       <div className="flex flex-col gap-[10px]">
-        <Icon style="green" icon={RiWalletLine} />
+        <Icon style={type === "income" ? "green" : "red"} icon={RiWalletLine} />
 
         <div className="flex flex-col">
           <span className="text-[16px]">{data?.category}</span>
-          <span className="text-[12px]">
-            {formattedDate(data?.date)}
-          </span>
+          <span className="text-[12px]">{formattedDate(data?.date)}</span>
         </div>
       </div>
 

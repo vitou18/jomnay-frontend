@@ -7,7 +7,7 @@ const AllReport = ({ data, onDownloadReport }) => {
   //   console.log(data);
 
   return (
-    <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
+    <section className="bg-[#fff] shadow-[0_0_8px_0_rgba(0,0,0,0.05)] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
       <header className="flex items-center justify-between">
         <h3 className="text-[18px] md:text-[20px] font-medium">
           Recent Report
