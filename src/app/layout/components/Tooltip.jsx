@@ -4,7 +4,7 @@ import { RiArrowLeftDownLine, RiArrowRightUpLine } from "react-icons/ri";
 const Tooltip = ({ type, amount }) => {
   return (
     <div
-      className={`flex text-[10px] gap-x-[5px] md: md:text-[14px] md:font-medium items-center rounded-lg p-[10px] ${
+      className={`flex gap-x-[5px] text-[14px] md:font-medium items-center rounded-lg p-[10px] ${
         type === "income"
           ? "bg-[#16A34A]/5 text-[#16A34A]"
           : "bg-[#DC2626]/5 text-[#DC2626]"
