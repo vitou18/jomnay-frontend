@@ -10,6 +10,7 @@ import {
   RiHome2Line,
   RiWalletLine,
 } from "react-icons/ri";
+import Modal from "./components/Modal";
 
 const sidebarItems = [
   { path: "/", name: "Dashboard", icon: <RiHome2Line /> },
@@ -22,6 +23,7 @@ const RootLayout = () => {
   const { onLogout } = useAuth();
   const location = useLocation();
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -29,14 +31,37 @@ const RootLayout = () => {
     return () => clearTimeout(timer);
   }, [location]);
 
+  const onClickModal = () => {
+    setShow((pre) => !pre);
+  };
+
+  const onClickDelete = () => {
+    onLogout();
+    setShow((pre) => !pre);
+  };
+
   return (
     <div className="font-popins">
-      <Sidebar logo={logo} onLogout={onLogout} sidebarItems={sidebarItems} />
+      <Sidebar
+        logo={logo}
+        onClickModal={onClickModal}
+        sidebarItems={sidebarItems}
+      />
 
       <div className="transition-all relative duration-300 md:ml-[260px]">
         {loading && <Loader />}
         <Outlet />
       </div>
+
+      {show && (
+        <Modal
+          show={show}
+          setShow={setShow}
+          title="Logout"
+          desc="Are you sure you want to logout?"
+          onDelete={onClickDelete}
+        />
+      )}
     </div>
   );
 };

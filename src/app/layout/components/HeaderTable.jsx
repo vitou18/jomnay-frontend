@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../utils/Button";
-import { RiAddLine } from "react-icons/ri";
+import { RiAddLargeFill } from "react-icons/ri";
 
 const HeaderTable = ({onClick}) => {
   return (
@@ -11,7 +11,7 @@ const HeaderTable = ({onClick}) => {
         <Button
           text="Add"
           onClick={onClick}
-          icon={RiAddLine}
+          icon={RiAddLargeFill}
         />
       </div>
     </header>

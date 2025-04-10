@@ -13,11 +13,13 @@ const AllReport = ({ data, onDownloadReport }) => {
           Recent Report
         </h3>
 
-        <Button
-          text="Download Excel"
-          onClick={onDownloadReport}
-          icon={RiDownloadLine}
-        />
+        {data && data.length > 0 && (
+          <Button
+            text="Download Excel"
+            onClick={onDownloadReport}
+            icon={RiDownloadLine}
+          />
+        )}
       </header>
 
       <div className="mt-[20px] overflow-x-auto">
@@ -65,7 +67,7 @@ const AllReport = ({ data, onDownloadReport }) => {
             </tbody>
           </table>
         ) : (
-          <div className="h-[360px] w-full flex items-center text-center justify-center">
+          <div className="h-[350px] text-[#696969] w-full flex items-center text-center justify-center">
             No data available
           </div>
         )}

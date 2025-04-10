@@ -2,9 +2,7 @@ import Menu from "./Menu";
 import Logo from "./Logo";
 import Logout from "./Logout";
 
-const Sidebar = ({ sidebarItems, sideBarShow, logo, onLogout }) => {
-  const onClick = () => onLogout();
-
+const Sidebar = ({ sidebarItems, sideBarShow, logo, onClickModal }) => {
   return (
     <nav
       className={`fixed transition-all duration-300 shadow-[0_0_16px_0_rgba(0,0,0,0.5)] md:shadow-none md:h-screen bottom-[20px] px-[20px] py-[15px] md:py-[40px] md:px-0 right-0 rounded-[40px] left-0 mx-auto md:mx-0 md:rounded-none bg-[#3A3A3A] w-max gap-x-[10px] md:top-0 flex justify-center md:justify-start ${
@@ -15,7 +13,7 @@ const Sidebar = ({ sidebarItems, sideBarShow, logo, onLogout }) => {
 
       <Menu sidebarItems={sidebarItems} />
 
-      <Logout onClick={onClick} />
+      <Logout onClick={onClickModal} />
     </nav>
   );
 };

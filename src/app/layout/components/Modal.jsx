@@ -38,7 +38,7 @@ const Modal = ({ show, setShow, title, desc, onDelete }) => {
             style="gray"
             onClick={() => setShow((pre) => !pre)}
           />
-          <Button text="Delete" style="delete" onClick={onDelete} />
+          <Button text="Yes" style="delete" onClick={onDelete} />
         </div>
       </div>
     </div>
