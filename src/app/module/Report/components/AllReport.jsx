@@ -15,7 +15,7 @@ const AllReport = ({ data, onDownloadReport }) => {
 
         {data && data.length > 0 && (
           <Button
-            text="Download Excel"
+            text="Download"
             onClick={onDownloadReport}
             icon={RiDownloadLine}
           />
@@ -37,10 +37,10 @@ const AllReport = ({ data, onDownloadReport }) => {
                   Category
                 </th>
                 <th className="text-left px-[30px] py-[10px] font-medium text-[#33363F]">
-                  Amount
+                  Date
                 </th>
                 <th className="text-left px-[30px] py-[10px] font-medium text-[#33363F]">
-                  Date
+                  Amount
                 </th>
               </tr>
             </thead>
@@ -50,17 +50,17 @@ const AllReport = ({ data, onDownloadReport }) => {
                   <td className="pe-[30px] text-[14px] py-[10px] text-[#000]/70">
                     {index + 1}
                   </td>
-                  <td className="px-[30px] text-[14px] py-[10px] text-[#000]/70">
+                  <td className="px-[30px] capitalize text-[14px] py-[10px] text-[#000]/70">
                     {item.type}
                   </td>
                   <td className="px-[30px] text-[14px] py-[10px] text-[#000]/70">
                     {item.category}
                   </td>
                   <td className="px-[30px] text-[14px] py-[10px] text-[#000]/70">
-                    ${item.amount.toFixed(2)}
+                    {item.date ? moment(item.date).format("YYYY-MM-DD") : ""}
                   </td>
                   <td className="px-[30px] text-[14px] py-[10px] text-[#000]/70">
-                    {item.date ? moment(item.date).format("YYYY-MM-DD") : ""}
+                    ${item.amount.toFixed(2)}
                   </td>
                 </tr>
               ))}

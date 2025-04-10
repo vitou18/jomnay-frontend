@@ -15,16 +15,16 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     );
   }
 
-  if (Icon && text === "Download Excel") {
+  if (Icon && text === "Download") {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] px-[15px] cursor-pointer flex items-center gap-x-[8px] bg-[#EFBB5E] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#E5B35A] focus:bg-[#E5B35A]"
+        className="p-[10px] md:p-[10px] md:px-[15px] cursor-pointer flex items-center gap-x-[8px] bg-[#EFBB5E] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#E5B35A] focus:bg-[#E5B35A]"
       >
         <span className="text-[18px]">
           <Icon />
         </span>
-        <span>{text}</span>
+        <span className="hidden md:inline">{text}</span>
       </button>
     );
   }
@@ -89,7 +89,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
       </button>
     );
   }
-  
+
   if (style === "delete") {
     return (
       <button
