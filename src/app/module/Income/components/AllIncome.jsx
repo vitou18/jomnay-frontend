@@ -35,7 +35,7 @@ const AllIncome = ({ data }) => {
 
       <TableContainer
         navigate={navigate}
-        onClickDelete={onGetIdCard}
+        onDelete={onGetIdCard}
         data={data}
         type="income"
       />

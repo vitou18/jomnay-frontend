@@ -3,6 +3,7 @@ import useExpense from "../core/action";
 import HeaderTable from "../../../layout/components/HeaderTable";
 import CardContainer from "../../../layout/components/CardContainer";
 import Modal from "../../../layout/components/Modal";
+import TableContainer from "../../../layout/components/TableContainer";
 
 const AllExpense = ({ data }) => {
   const { navigate, onDeleteExpense } = useExpense();
@@ -26,6 +27,13 @@ const AllExpense = ({ data }) => {
       <HeaderTable onClick={() => navigate("/expense/add")} />
 
       <CardContainer
+        data={data}
+        onDelete={onGetIdCard}
+        navigate={navigate}
+        type="expense"
+      />
+
+      <TableContainer
         data={data}
         onDelete={onGetIdCard}
         navigate={navigate}

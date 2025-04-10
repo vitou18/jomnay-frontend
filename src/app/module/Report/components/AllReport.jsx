@@ -22,7 +22,7 @@ const AllReport = ({ data, onDownloadReport }) => {
         )}
       </header>
 
-      <div className="mt-[20px] overflow-x-auto">
+      <div className="overflow-x-auto">
         {data && data.length > 0 ? (
           <table className="min-w-full table-auto whitespace-nowrap">
             <thead>
