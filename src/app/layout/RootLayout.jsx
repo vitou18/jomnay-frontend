@@ -10,7 +10,9 @@ import {
   RiHome2Line,
   RiWalletLine,
 } from "react-icons/ri";
-import Modal from "./components/Modal";
+import Button from "../utils/Button";
+import Modal from "../utils/Modal";
+import Action from "../utils/Action";
 
 const sidebarItems = [
   { path: "/", name: "Dashboard", icon: <RiHome2Line /> },
@@ -35,8 +37,8 @@ const RootLayout = () => {
     setShow((pre) => !pre);
   };
 
-  const onClickDelete = () => {
-    onLogout();
+  const onClickLogout = async () => {
+    await onLogout();
     setShow((pre) => !pre);
   };
 
@@ -59,8 +61,14 @@ const RootLayout = () => {
           setShow={setShow}
           title="Logout"
           desc="Are you sure you want to logout?"
-          onDelete={onClickDelete}
-        />
+        >
+          <Action
+            cancelText="Cancel"
+            submitText="Yes"
+            onCancel={() => setShow((pre) => !pre)}
+            onSubmit={onClickLogout}
+          />
+        </Modal>
       )}
     </div>
   );

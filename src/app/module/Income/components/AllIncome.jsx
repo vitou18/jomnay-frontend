@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import useIncome from "../core/action";
 import HeaderTable from "../../../layout/components/HeaderTable";
 import CardContainer from "../../../layout/components/CardContainer";
-import Modal from "../../../layout/components/Modal";
 import TableContainer from "../../../layout/components/TableContainer";
+import Modal from "../../../utils/Modal";
 
 const AllIncome = ({ data }) => {
   const { onDeleteIncome, navigate } = useIncome();

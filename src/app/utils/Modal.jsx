@@ -1,8 +1,7 @@
 import React from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
-import Button from "../../utils/Button";
 
-const Modal = ({ show, setShow, title, desc, onDelete }) => {
+const Modal = ({ children, show, setShow, title, desc, onDelete }) => {
   const handleModalClick = (e) => {
     e.stopPropagation();
   };
@@ -32,14 +31,7 @@ const Modal = ({ show, setShow, title, desc, onDelete }) => {
           {desc}
         </p>
 
-        <div className="flex mt-[20px] gap-x-[10px] justify-end items-center">
-          <Button
-            text="Cancel"
-            style="gray"
-            onClick={() => setShow((pre) => !pre)}
-          />
-          <Button text="Yes" style="delete" onClick={onDelete} />
-        </div>
+        {children}
       </div>
     </div>
   );
