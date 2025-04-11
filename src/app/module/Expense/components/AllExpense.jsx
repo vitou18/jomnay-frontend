@@ -3,7 +3,7 @@ import useExpense from "../core/action";
 import Table from "./Table";
 
 const AllExpense = () => {
-  const { fetchExpense, expense } = useExpense();
+  const { fetchExpense, expense, onDeleteExpense } = useExpense();
 
   useEffect(() => {
     fetchExpense();
@@ -11,7 +11,7 @@ const AllExpense = () => {
 
   return (
     <>
-      <Table data={expense} />
+      <Table data={expense} onDelete={onDeleteExpense} />
     </>
   );
 };
