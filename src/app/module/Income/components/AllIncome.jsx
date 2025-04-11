@@ -6,7 +6,7 @@ import Add from "./Add";
 import Edit from "./Edit";
 
 const AllIncome = () => {
-  const { fetchIncome, income, onDeleteIncome, navigate, fetchIncomeById } =
+  const { fetchIncome, income, onDeleteIncome, fetchIncomeById } =
     useIncome();
   const [showAdd, setShowAdd] = useState(false);
   const [showEdit, setShowEdit] = useState(false);

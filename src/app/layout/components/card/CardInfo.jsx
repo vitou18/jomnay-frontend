@@ -1,4 +1,4 @@
-import { RiDeleteBin7Line, RiEditLine, RiWalletLine } from "react-icons/ri";
+import { RiDeleteBin7Line, RiEditLine, RiExchangeDollarLine, RiWalletLine } from "react-icons/ri";
 import moment from "moment/moment";
 import Icon from "./Icon";
 import Tooltip from "./Tooltip";
@@ -16,7 +16,7 @@ const CardInfo = ({ data, onDelete, onEdit, type }) => {
   return (
     <article className="p-[15px] bg-[#f8f8f8] flex items-start justify-between rounded-lg">
       <div className="flex flex-col gap-[10px]">
-        <Icon style={type === "income" ? "green" : "red"} icon={RiWalletLine} />
+        <Icon style={type === "income" ? "green" : "red"} icon={type === "income" ? RiWalletLine : RiExchangeDollarLine} />
 
         <div className="flex flex-col">
           <span className="text-[16px]">{data?.category}</span>

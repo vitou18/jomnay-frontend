@@ -81,17 +81,7 @@ const useExpense = () => {
       });
   };
 
-  const fetchExpenseById = async (id) => {
-    try {
-      const res = await reqGetExpenseById(id);
-
-      // console.log(res);
-      dispatch(setExpenseDetails(res.data));
-      return res.data;
-    } catch (e) {
-      console.log("Error fetching expense...");
-    }
-  };
+  const fetchExpenseById = (payload) => dispatch(setExpenseDetails(payload));
 
   const onChangeEdit = (e) =>
     dispatch(
