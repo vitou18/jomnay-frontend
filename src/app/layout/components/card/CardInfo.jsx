@@ -30,7 +30,7 @@ const CardInfo = ({ data, onDelete, onEdit, type }) => {
         <div className="flex items-center gap-x-[5px] md:gap-x-[10px]">
           <Button icon={RiEditLine} type="edit" onClick={() => onEdit(data)} />
           <Button
-            onClick={() => onClickDelete(data?._id, data?.category)}
+            onClick={() => onClickDelete(data?._id)}
             icon={RiDeleteBin7Line}
             type="delete"
           />

@@ -66,10 +66,10 @@ const useIncome = () => {
     }
   };
 
-  const onDeleteIncome = async (id, category) => {
+  const onDeleteIncome = async (id) => {
     return reqDeleteIncome(id)
       .then(() => {
-        toast.success(`${category} has been deleted...`);
+        toast.success("Income has been deleted...");
         fetchIncome();
       })
       .catch(() => {

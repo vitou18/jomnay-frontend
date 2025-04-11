@@ -57,7 +57,7 @@ const TableContainer = ({ data, onDelete, onEdit }) => {
                     onClick={() => onEdit(item)}
                   />
                   <Button
-                    onClick={() => onDelete(item?._id, item?.category)}
+                    onClick={() => onDelete(item?._id)}
                     icon={RiDeleteBin7Line}
                     type="delete"
                   />
