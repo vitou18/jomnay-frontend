@@ -4,7 +4,13 @@ import moment from "moment/moment";
 import Button from "../../../utils/Button";
 
 const TableContainer = ({ data, type, onDelete, navigate }) => {
-  //   console.log(data);
+  const formattedDate = (date) => moment(date).format("Do MMM YYYY");
+
+  const onClickDelete = (id, category) => {
+    // console.log(id, category);
+
+    onDelete(id, category);
+  };
 
   return (
     <div className="hidden md:block overflow-x-auto">
@@ -39,7 +45,7 @@ const TableContainer = ({ data, type, onDelete, navigate }) => {
                   {item.category}
                 </td>
                 <td className="px-[30px] text-[14px] py-[10px] text-[#000]/70">
-                  {item.date ? moment(item.date).format("YYYY-MM-DD") : ""}
+                  {formattedDate(item.date)}
                 </td>
                 <td className="px-[30px] text-center text-[14px] py-[10px] text-[#000]/70">
                   ${item.amount.toFixed(2)}
@@ -48,10 +54,10 @@ const TableContainer = ({ data, type, onDelete, navigate }) => {
                   <Button
                     icon={RiEditLine}
                     type="edit"
-                    onClick={() => navigate(`/${type}/edit/${data?._id}`)}
+                    onClick={() => navigate(`/${type}/edit/${item?._id}`)}
                   />
                   <Button
-                    onClick={() => onDelete(data?._id, data?.category)}
+                    onClick={() => onDelete(item?._id, item?.category)}
                     icon={RiDeleteBin7Line}
                     type="delete"
                   />

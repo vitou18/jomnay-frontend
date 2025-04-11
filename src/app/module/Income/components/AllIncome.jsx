@@ -1,56 +1,18 @@
-import React, { useState } from "react";
+import { useEffect } from "react";
 import useIncome from "../core/action";
-import HeaderTable from "../../../layout/components/table/HeaderTable";
-import CardContainer from "../../../layout/components/card/CardContainer";
-import TableContainer from "../../../layout/components/table/TableContainer";
-import Modal from "../../../utils/Modal";
+import Table from "./Table";
 
+const AllIncome = () => {
+  const { fetchIncome, income, onDeleteIncome, navigate } = useIncome();
 
-const AllIncome = ({ data }) => {
-  const { onDeleteIncome, navigate } = useIncome();
-  const [selected, setSelected] = useState({ id: null, category: null });
-  const [show, setShow] = useState(false);
-
-  const onGetIdCard = (id, category) => {
-    setSelected({ id, category });
-    setShow(true);
-  };
-
-  // console.log(selected);
-
-  const onDelete = () => {
-    onDeleteIncome(selected.id, selected.category);
-    setShow(false);
-  };
+  useEffect(() => {
+    fetchIncome();
+  }, []);
 
   return (
-    <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
-      <HeaderTable onClick={() => navigate("/income/add")} />
-
-      <CardContainer
-        data={data}
-        onDelete={onGetIdCard}
-        navigate={navigate}
-        type="income"
-      />
-
-      <TableContainer
-        navigate={navigate}
-        onDelete={onGetIdCard}
-        data={data}
-        type="income"
-      />
-
-      {show && (
-        <Modal
-          title={`Delete ${selected.category}`}
-          desc="Are you sure you want to delete?"
-          show={show}
-          setShow={setShow}
-          onDelete={onDelete}
-        />
-      )}
-    </section>
+    <>
+      <Table data={income} onDelete={onDeleteIncome} navigate={navigate} />
+    </>
   );
 };
 
