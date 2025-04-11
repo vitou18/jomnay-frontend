@@ -5,7 +5,7 @@ import TableContainer from "../../../layout/components/table/TableContainer";
 import Modal from "../../../utils/Modal";
 import Action from "../../../utils/Action";
 
-const Table = ({ data, onDelete, navigate }) => {
+const Table = ({ data, onDelete, navigate, onAdd }) => {
   const [selected, setSelected] = useState({ id: null, category: null });
   const [show, setShow] = useState(false);
 
@@ -21,7 +21,7 @@ const Table = ({ data, onDelete, navigate }) => {
 
   return (
     <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
-      <HeaderTable onClick={() => navigate("/income/add")} />
+      <HeaderTable onClick={onAdd} />
 
       <CardContainer
         data={data}
