@@ -6,16 +6,16 @@ import HeaderTable from "../../../layout/components/table/HeaderTable";
 import TableContainer from "../../../layout/components/table/TableContainer";
 
 const Table = ({ data, onDelete, onAdd, onEdit }) => {
-  const [selected, setSelected] = useState({ id: null, category: null });
+  const [selected, setSelected] = useState({ id: null });
   const [show, setShow] = useState(false);
 
-  const onGetIdCard = (id, category) => {
-    setSelected({ id, category });
+  const onGetIdCard = (id) => {
+    setSelected({ id });
     setShow(true);
   };
 
   const onDeleteIncome = () => {
-    onDelete(selected.id, selected.category);
+    onDelete(selected.id);
     setShow(false);
   };
 
@@ -34,8 +34,8 @@ const Table = ({ data, onDelete, onAdd, onEdit }) => {
 
       {show && (
         <Modal
-          title={`Delete ${selected.category}`}
-          desc="Are you sure you want to delete?"
+          title="Delete Expense"
+          desc="Are you sure you want to delete this expense?"
           show={show}
           setShow={setShow}
         >

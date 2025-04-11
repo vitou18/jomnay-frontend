@@ -70,10 +70,10 @@ const useExpense = () => {
     }
   };
 
-  const onDeleteExpense = async (id, category) => {
+  const onDeleteExpense = async (id) => {
     return reqDeleteExpense(id)
       .then(() => {
-        toast.success(`${category} has been deleted...`);
+        toast.success("Expense has been deleted...");
         fetchExpense();
       })
       .catch(() => {
