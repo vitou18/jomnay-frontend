@@ -4,6 +4,7 @@ import HeaderTable from "../../../layout/components/HeaderTable";
 import CardContainer from "../../../layout/components/CardContainer";
 import TableContainer from "../../../layout/components/TableContainer";
 import Modal from "../../../utils/Modal";
+import Action from "../../../utils/Action";
 
 const AllExpense = ({ data }) => {
   const { navigate, onDeleteExpense } = useExpense();
@@ -42,12 +43,13 @@ const AllExpense = ({ data }) => {
 
       {show && (
         <Modal
-          title={`Delete ${selected.category}`}
+          title={`Delete Expense`}
           desc="Are you sure you want to delete?"
           show={show}
           setShow={setShow}
-          onDelete={onDelete}
-        />
+        >
+          <Action onSubmit={onDelete} onCancel={() => setShow((pre) => !pre)} />
+        </Modal>
       )}
     </section>
   );
