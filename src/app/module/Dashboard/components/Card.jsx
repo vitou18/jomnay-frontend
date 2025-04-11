@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from "../../../layout/components/Icon";
 import CountUp from "react-countup";
+import Icon from "../../../layout/components/card/Icon";
 
 const Card = ({ icon, title, balance, style }) => {
   return (

@@ -5,7 +5,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[7px] px-[12px] md:p-[10px] md:px-[15px] cursor-pointer flex items-center gap-x-[8px] bg-[#16A34A] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#149141] focus:bg-[#149141]"
+        className="p-[7px] px-[12px] md:p-[10px] md:px-[15px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#3A3A3A] hover:text-[#fff] transition-all duration-300 hover:bg-[#16A34A] ]"
       >
         <span className="text-[14px] md:text-[18px]">
           <Icon />
@@ -19,7 +19,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] md:p-[10px] md:px-[15px] cursor-pointer flex items-center gap-x-[8px] bg-[#EFBB5E] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#E5B35A] focus:bg-[#E5B35A]"
+        className="p-[10px] md:p-[10px] md:px-[15px] cursor-pointer flex items-center gap-x-[8px] bg-[#f8f8f8] rounded-lg text-[#3A3A3A] hover:text-[#fff] transition-all duration-300 hover:bg-[#EFBB5E] ]"
       >
         <span className="text-[18px]">
           <Icon />
@@ -33,7 +33,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#fff] rounded-lg text-[#3A3A3A] transition-all duration-300 hover:bg-[#DC2626] focus:bg-[#DC2626] focus:text-[#fff] hover:text-[#fff]"
+        className="p-[10px] cursor-pointer flex items-center gap-x-[8px] bg-[#fff] rounded-lg text-[#3A3A3A] transition-all duration-300 hover:bg-[#DC2626] ] ] hover:text-[#fff]"
       >
         <span className="text-[18px]">
           <Icon />
@@ -59,7 +59,7 @@ const Button = ({ text, type, style, icon: Icon, onClick }) => {
     return (
       <button
         onClick={onClick}
-        className="px-[15px] text-[12px] md:text-[14px] h-[36px] cursor-pointer bg-[#DC2626] rounded-lg text-[#fff] transition-all duration-300 hover:bg-[#CA2424] focus:bg-[#CA2424]"
+        className="px-[15px] text-[12px] md:text-[14px] h-[36px] cursor-pointer bg-[#f8f8f8] rounded-lg text-[#3A3A3A] hover:text-[#fff] transition-all duration-300 hover:bg-[#DC2626] ]"
       >
         <span>{text}</span>
       </button>

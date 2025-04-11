@@ -70,10 +70,10 @@ const useExpense = () => {
     }
   };
 
-  const onDeleteExpense = async (id, category) => {
+  const onDeleteExpense = async (id) => {
     return reqDeleteExpense(id)
       .then(() => {
-        toast.success(`${category} has been deleted...`);
+        toast.success("Expense has been deleted...");
         fetchExpense();
       })
       .catch(() => {
@@ -81,17 +81,7 @@ const useExpense = () => {
       });
   };
 
-  const fetchExpenseById = async (id) => {
-    try {
-      const res = await reqGetExpenseById(id);
-
-      // console.log(res);
-      dispatch(setExpenseDetails(res.data));
-      return res.data;
-    } catch (e) {
-      console.log("Error fetching expense...");
-    }
-  };
+  const fetchExpenseById = (payload) => dispatch(setExpenseDetails(payload));
 
   const onChangeEdit = (e) =>
     dispatch(
@@ -106,6 +96,7 @@ const useExpense = () => {
     try {
       await reqUpdateExpense(data._id, data);
       toast.success(`${data?.category} has been updated...`);
+      fetchExpense();
     } catch {
       toast.error("Error updating expense");
     } finally {

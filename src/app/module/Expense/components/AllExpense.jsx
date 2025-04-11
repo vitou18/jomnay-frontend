@@ -1,55 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useExpense from "../core/action";
-import HeaderTable from "../../../layout/components/HeaderTable";
-import CardContainer from "../../../layout/components/CardContainer";
-import Modal from "../../../layout/components/Modal";
-import TableContainer from "../../../layout/components/TableContainer";
+import Table from "./Table";
+import Modal from "../../../utils/Modal";
+import Add from "./Add";
+import Edit from "./Edit";
 
-const AllExpense = ({ data }) => {
-  const { navigate, onDeleteExpense } = useExpense();
-  const [selected, setSelected] = useState({ id: null, category: null });
-  const [show, setShow] = useState(false);
+const AllExpense = () => {
+  const { fetchExpense, expense, onDeleteExpense, fetchExpenseById } =
+    useExpense();
+  const [showAdd, setShowAdd] = useState();
+  const [showEdit, setShowEdit] = useState();
 
-  const onGetIdCard = (id, category) => {
-    setSelected({ id, category });
-    setShow(true);
+  const onEditExpense = (payload) => {
+    setShowEdit((pre) => !pre);
+    fetchExpenseById(payload);
   };
 
-  // console.log(selected);
-
-  const onDelete = () => {
-    onDeleteExpense(selected.id, selected.category);
-    setShow(false);
-  };
+  useEffect(() => {
+    fetchExpense();
+  }, []);
 
   return (
-    <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
-      <HeaderTable onClick={() => navigate("/expense/add")} />
-
-      <CardContainer
-        data={data}
-        onDelete={onGetIdCard}
-        navigate={navigate}
-        type="expense"
+    <>
+      <Table
+        onAdd={() => setShowAdd((pre) => !pre)}
+        data={expense}
+        onEdit={onEditExpense}
+        onDelete={onDeleteExpense}
       />
 
-      <TableContainer
-        data={data}
-        onDelete={onGetIdCard}
-        navigate={navigate}
-        type="expense"
-      />
-
-      {show && (
+      {showAdd && (
         <Modal
-          title={`Delete ${selected.category}`}
-          desc="Are you sure you want to delete?"
-          show={show}
-          setShow={setShow}
-          onDelete={onDelete}
-        />
+          title="Add Expense"
+          desc="Record a new expense entry."
+          show={showAdd}
+          setShow={setShowAdd}
+        >
+          <Add onClick={() => setShowAdd((pre) => !pre)} />
+        </Modal>
       )}
-    </section>
+
+      {showEdit && (
+        <Modal
+          title="Edit Expense"
+          desc="Update your expense details."
+          show={showEdit}
+          setShow={setShowEdit}
+        >
+          <Edit onClick={() => setShowEdit((pre) => !pre)} />
+        </Modal>
+      )}
+    </>
   );
 };
 

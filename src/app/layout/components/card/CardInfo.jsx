@@ -1,10 +1,10 @@
-import { RiDeleteBin7Line, RiEditLine, RiWalletLine } from "react-icons/ri";
-import Icon from "./Icon";
+import { RiDeleteBin7Line, RiEditLine, RiExchangeDollarLine, RiWalletLine } from "react-icons/ri";
 import moment from "moment/moment";
+import Icon from "./Icon";
 import Tooltip from "./Tooltip";
-import Button from "../../utils/Button";
+import Button from "../../../utils/Button";
 
-const CardInfo = ({ data, onDelete, navigate, type }) => {
+const CardInfo = ({ data, onDelete, onEdit, type }) => {
   const formattedDate = (date) => moment(date).format("Do MMM YYYY");
 
   const onClickDelete = (id, category) => {
@@ -16,7 +16,7 @@ const CardInfo = ({ data, onDelete, navigate, type }) => {
   return (
     <article className="p-[15px] bg-[#f8f8f8] flex items-start justify-between rounded-lg">
       <div className="flex flex-col gap-[10px]">
-        <Icon style={type === "income" ? "green" : "red"} icon={RiWalletLine} />
+        <Icon style={type === "income" ? "green" : "red"} icon={type === "income" ? RiWalletLine : RiExchangeDollarLine} />
 
         <div className="flex flex-col">
           <span className="text-[16px]">{data?.category}</span>
@@ -28,13 +28,9 @@ const CardInfo = ({ data, onDelete, navigate, type }) => {
         <Tooltip type={type} amount={data?.amount} />
 
         <div className="flex items-center gap-x-[5px] md:gap-x-[10px]">
+          <Button icon={RiEditLine} type="edit" onClick={() => onEdit(data)} />
           <Button
-            icon={RiEditLine}
-            type="edit"
-            onClick={() => navigate(`/${type}/edit/${data?._id}`)}
-          />
-          <Button
-            onClick={() => onClickDelete(data?._id, data?.category)}
+            onClick={() => onClickDelete(data?._id)}
             icon={RiDeleteBin7Line}
             type="delete"
           />

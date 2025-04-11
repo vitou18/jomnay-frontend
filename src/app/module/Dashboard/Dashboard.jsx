@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Container from "../../layout/components/Container";
 import useDashboard from "./core/action";
 import CardInfo from "./components/CardInfo";
+import Container from "../../layout/components/container/Container";
 
 const Dashboard = () => {
   const { dashboard, fetchDashboard } = useDashboard();

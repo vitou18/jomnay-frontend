@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initExpense = {
   category: "",
   amount: 0,
-  date: "",
+  date: new Date().toISOString().split("T")[0],
 };
 
 const initialState = {
