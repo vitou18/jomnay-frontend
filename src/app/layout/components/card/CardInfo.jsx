@@ -4,7 +4,7 @@ import Icon from "./Icon";
 import Tooltip from "./Tooltip";
 import Button from "../../../utils/Button";
 
-const CardInfo = ({ data, onDelete, navigate, type }) => {
+const CardInfo = ({ data, onDelete, onEdit, type }) => {
   const formattedDate = (date) => moment(date).format("Do MMM YYYY");
 
   const onClickDelete = (id, category) => {
@@ -28,11 +28,7 @@ const CardInfo = ({ data, onDelete, navigate, type }) => {
         <Tooltip type={type} amount={data?.amount} />
 
         <div className="flex items-center gap-x-[5px] md:gap-x-[10px]">
-          <Button
-            icon={RiEditLine}
-            type="edit"
-            onClick={() => navigate(`/${type}/edit/${data?._id}`)}
-          />
+          <Button icon={RiEditLine} type="edit" onClick={() => onEdit(data)} />
           <Button
             onClick={() => onClickDelete(data?._id, data?.category)}
             icon={RiDeleteBin7Line}

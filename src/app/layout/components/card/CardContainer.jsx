@@ -9,7 +9,7 @@ const CardContainer = ({ data, onDelete, onEdit, type }) => {
           type={type}
           key={item._id}
           data={item}
-          onEdit={() => onEdit(item)}
+          onEdit={onEdit}
           onDelete={onDelete}
         />
       ))}
