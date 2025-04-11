@@ -96,6 +96,7 @@ const useExpense = () => {
     try {
       await reqUpdateExpense(data._id, data);
       toast.success(`${data?.category} has been updated...`);
+      fetchExpense();
     } catch {
       toast.error("Error updating expense");
     } finally {

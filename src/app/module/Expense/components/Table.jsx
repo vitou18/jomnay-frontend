@@ -5,7 +5,7 @@ import CardContainer from "../../../layout/components/card/CardContainer";
 import HeaderTable from "../../../layout/components/table/HeaderTable";
 import TableContainer from "../../../layout/components/table/TableContainer";
 
-const Table = ({ data, onDelete, onAdd }) => {
+const Table = ({ data, onDelete, onAdd, onEdit }) => {
   const [selected, setSelected] = useState({ id: null, category: null });
   const [show, setShow] = useState(false);
 
@@ -23,9 +23,14 @@ const Table = ({ data, onDelete, onAdd }) => {
     <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
       <HeaderTable onClick={onAdd} />
 
-      <CardContainer data={data} onDelete={onGetIdCard} type="expense" />
+      <CardContainer
+        data={data}
+        onDelete={onGetIdCard}
+        type="expense"
+        onEdit={onEdit}
+      />
 
-      <TableContainer onDelete={onGetIdCard} data={data} />
+      <TableContainer onDelete={onGetIdCard} onEdit={onEdit} data={data} />
 
       {show && (
         <Modal
