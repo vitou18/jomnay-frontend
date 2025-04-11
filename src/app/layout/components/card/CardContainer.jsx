@@ -1,7 +1,7 @@
 import React from "react";
 import CardInfo from "./CardInfo";
 
-const CardContainer = ({ data, onDelete, navigate, type }) => {
+const CardContainer = ({ data, onDelete, onEdit, type }) => {
   return (
     <div className="grid sm:grid-cols-2 md:hidden gap-[20px]">
       {data?.map((item) => (
@@ -9,7 +9,7 @@ const CardContainer = ({ data, onDelete, navigate, type }) => {
           type={type}
           key={item._id}
           data={item}
-          navigate={navigate}
+          onEdit={() => onEdit(item)}
           onDelete={onDelete}
         />
       ))}

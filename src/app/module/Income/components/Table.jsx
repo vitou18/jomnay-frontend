@@ -5,7 +5,7 @@ import TableContainer from "../../../layout/components/table/TableContainer";
 import Modal from "../../../utils/Modal";
 import Action from "../../../utils/Action";
 
-const Table = ({ data, onDelete, navigate, onAdd }) => {
+const Table = ({ data, onDelete, onAdd, onEdit }) => {
   const [selected, setSelected] = useState({ id: null, category: null });
   const [show, setShow] = useState(false);
 
@@ -25,17 +25,12 @@ const Table = ({ data, onDelete, navigate, onAdd }) => {
 
       <CardContainer
         data={data}
+        onEdit={onEdit}
         onDelete={onGetIdCard}
-        navigate={navigate}
         type="income"
       />
 
-      <TableContainer
-        navigate={navigate}
-        onDelete={onGetIdCard}
-        data={data}
-        type="income"
-      />
+      <TableContainer onEdit={onEdit} onDelete={onGetIdCard} data={data} />
 
       {show && (
         <Modal

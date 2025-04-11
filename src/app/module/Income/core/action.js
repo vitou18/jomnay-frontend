@@ -77,16 +77,7 @@ const useIncome = () => {
       });
   };
 
-  const fetchIncomeById = async (id) => {
-    try {
-      const res = await reqGetIncomeById(id);
-      // console.log(res);
-      dispatch(setIncomeDetails(res.data));
-      return res.data;
-    } catch (e) {
-      console.log("Error fetching income...");
-    }
-  };
+  const fetchIncomeById = (payload) => dispatch(setIncomeDetails(payload));
 
   const onChangeEdit = (e) => {
     const { name, value } = e.target;
@@ -101,6 +92,8 @@ const useIncome = () => {
     try {
       await reqUpdateIncome(data._id, data);
       toast.success(`${data?.category} has been updated...`);
+
+      fetchIncome();
     } catch {
       toast.error("Error updating income");
     } finally {

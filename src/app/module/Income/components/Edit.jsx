@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../../utils/Input";
 import Button from "../../../utils/Button";
 import useIncome from "../core/action";
+import toast from "react-hot-toast";
+import moment from "moment/moment";
 
-const Add = ({ onClick }) => {
-  const { onChangeAdd, incomeInfo, onCreateIncome, loading } = useIncome();
-  const { category, amount, date } = incomeInfo;
+const Edit = ({ onClick }) => {
+  const { loading, onChangeEdit, incomeDetails, onUpdateIncome } = useIncome();
+  const [verify, setVerify] = useState(null);
+
+  useEffect(() => {
+    setVerify(incomeDetails);
+  }, []);
+
+  let { category, amount, date } = incomeDetails;
+
+  // console.log(incomeDetails);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await onCreateIncome();
+
+    if (incomeDetails === verify) {
+      toast.error("No Changes Detected...");
+
+      return;
+    }
+
+    await onUpdateIncome();
     onClick();
   };
 
@@ -21,7 +38,7 @@ const Add = ({ onClick }) => {
           name="category"
           type="text"
           value={category}
-          onChange={onChangeAdd}
+          onChange={onChangeEdit}
         />
 
         <Input
@@ -29,19 +46,19 @@ const Add = ({ onClick }) => {
           name="amount"
           type="number"
           value={amount}
-          onChange={onChangeAdd}
+          onChange={onChangeEdit}
         />
 
         <Input
           placeholder="Enter your date"
           name="date"
           type="date"
-          value={date}
-          onChange={onChangeAdd}
+          value={date ? moment(date).format("YYYY-MM-DD") : ""}
+          onChange={onChangeEdit}
         />
 
         <Button
-          text={loading ? "Adding Income..." : "Add Income"}
+          text={loading ? "Updating Income..." : "Update Income"}
           type="submit"
           disabled={loading}
         />
@@ -50,4 +67,4 @@ const Add = ({ onClick }) => {
   );
 };
 
-export default Add;
+export default Edit;

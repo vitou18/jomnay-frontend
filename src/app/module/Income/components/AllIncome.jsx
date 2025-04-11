@@ -3,10 +3,18 @@ import useIncome from "../core/action";
 import Table from "./Table";
 import Modal from "../../../utils/Modal";
 import Add from "./Add";
+import Edit from "./Edit";
 
 const AllIncome = () => {
-  const { fetchIncome, income, onDeleteIncome, navigate } = useIncome();
+  const { fetchIncome, income, onDeleteIncome, navigate, fetchIncomeById } =
+    useIncome();
   const [showAdd, setShowAdd] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+
+  const onEditIncome = (payload) => {
+    setShowEdit((pre) => !pre);
+    fetchIncomeById(payload);
+  };
 
   useEffect(() => {
     fetchIncome();
@@ -18,17 +26,28 @@ const AllIncome = () => {
         data={income}
         onAdd={() => setShowAdd((pre) => !pre)}
         onDelete={onDeleteIncome}
-        navigate={navigate}
+        onEdit={onEditIncome}
       />
 
       {showAdd && (
         <Modal
           title="Add Income"
-          desc="Record income to track earnings and manage budget."
+          desc="Record a new income entry."
           show={showAdd}
           setShow={setShowAdd}
         >
           <Add onClick={() => setShowAdd((pre) => !pre)} />
+        </Modal>
+      )}
+
+      {showEdit && (
+        <Modal
+          title="Edit Income"
+          desc="Update your income details."
+          show={showEdit}
+          setShow={setShowEdit}
+        >
+          <Edit onClick={() => setShowEdit((pre) => !pre)} />
         </Modal>
       )}
     </>

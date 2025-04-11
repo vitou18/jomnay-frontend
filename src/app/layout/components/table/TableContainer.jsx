@@ -3,7 +3,7 @@ import { RiDeleteBin7Line, RiEditLine } from "react-icons/ri";
 import moment from "moment/moment";
 import Button from "../../../utils/Button";
 
-const TableContainer = ({ data, type, onDelete, navigate }) => {
+const TableContainer = ({ data, onDelete, onEdit }) => {
   const formattedDate = (date) => moment(date).format("Do MMM YYYY");
 
   const onClickDelete = (id, category) => {
@@ -54,7 +54,7 @@ const TableContainer = ({ data, type, onDelete, navigate }) => {
                   <Button
                     icon={RiEditLine}
                     type="edit"
-                    onClick={() => navigate(`/${type}/edit/${item?._id}`)}
+                    onClick={() => onEdit(item)}
                   />
                   <Button
                     onClick={() => onDelete(item?._id, item?.category)}
