@@ -9,6 +9,7 @@ import useAuth from "../module/Auth/core/action";
 import EditIncome from "../module/Income/components/EditIncome";
 import AddExpense from "../module/Expense/components/AddExpense";
 import EditExpense from "../module/Expense/components/EditExpense";
+import Report from "../module/Report/Report";
 
 const PrivateRoute = () => {
   const { accessToken } = useAuth();
@@ -26,6 +27,7 @@ const PrivateRoute = () => {
           <Route path="expense" element={<Expense />} />
           <Route path="expense/add" element={<AddExpense />} />
           <Route path="expense/edit/:id" element={<EditExpense />} />
+          <Route path="report" element={<Report />} />
           <Route path="/*" element={<h1>Page not found!!</h1>} />
         </Route>
       </Routes>

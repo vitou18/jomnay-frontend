@@ -39,8 +39,8 @@ const EditIncome = () => {
   };
 
   return (
-    <Container title="Income - Edit" navigate={navigate}>
-      <div className="bg-[#fff] shadow-[0_0_8px_0_rgba(0,0,0,0.09)] rounded-lg p-[20px]">
+    <Container title="Income - Edit" onClick={() => navigate("/income")}>
+      <div className="bg-[#fff] shadow-[0_0_8px_0_rgba(0,0,0,0.05)] rounded-lg p-[20px]">
         <form onSubmit={onSubmit}>
           <div className="grid md:grid-cols-2 gap-y-[10px] md:gap-y-[20px] md:gap-x-[30px]">
             <Input

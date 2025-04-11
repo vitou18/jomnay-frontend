@@ -1,37 +1,54 @@
-import React from "react";
-import { RiAddLine } from "react-icons/ri";
-import Button from "../../../utils/Button";
-import CardInfo from "../../../layout/components/CardInfo";
+import React, { useState } from "react";
 import useIncome from "../core/action";
+import HeaderTable from "../../../layout/components/HeaderTable";
+import CardContainer from "../../../layout/components/CardContainer";
+import Modal from "../../../layout/components/Modal";
+import TableContainer from "../../../layout/components/TableContainer";
 
 const AllIncome = ({ data }) => {
   const { onDeleteIncome, navigate } = useIncome();
+  const [selected, setSelected] = useState({ id: null, category: null });
+  const [show, setShow] = useState(false);
+
+  const onGetIdCard = (id, category) => {
+    setSelected({ id, category });
+    setShow(true);
+  };
+
+  // console.log(selected);
+
+  const onDelete = () => {
+    onDeleteIncome(selected.id, selected.category);
+    setShow(false);
+  };
 
   return (
     <section className="bg-[#fff] rounded-lg p-[20px] flex flex-col gap-y-[30px]">
-      <header className="flex items-center justify-between">
-        <h3 className="text-[18px] md:text-[20px] font-medium">Recent List</h3>
+      <HeaderTable onClick={() => navigate("/income/add")} />
 
-        <div className="flex items-center gap-x-[10px]">
-          <Button
-            text="Add"
-            onClick={() => navigate("/income/add")}
-            icon={RiAddLine}
-          />
-        </div>
-      </header>
+      <CardContainer
+        data={data}
+        onDelete={onGetIdCard}
+        navigate={navigate}
+        type="income"
+      />
 
-      <div className="grid md:grid-cols-2 gap-x-[20px] md:gap-y-[30px] gap-y-[20px] md:gap-x-[80px]">
-        {data?.map((item) => (
-          <CardInfo
-            type="income"
-            key={item._id}
-            data={item}
-            navigate={navigate}
-            onDelete={onDeleteIncome}
-          />
-        ))}
-      </div>
+      <TableContainer
+        navigate={navigate}
+        onDelete={onGetIdCard}
+        data={data}
+        type="income"
+      />
+
+      {show && (
+        <Modal
+          title={`Delete ${selected.category}`}
+          desc="Are you sure you want to delete?"
+          show={show}
+          setShow={setShow}
+          onDelete={onDelete}
+        />
+      )}
     </section>
   );
 };
