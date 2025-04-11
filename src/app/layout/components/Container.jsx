@@ -14,7 +14,7 @@ const Container = ({ title, children, navigate, onClick }) => {
   }, []);
 
   return (
-    <div className="bg-[#F8F8F8] min-h-screen pb-[120px] sm:pb-[0px]">
+    <div className="bg-[#F8F8F8] min-h-screen pb-[120px] md:pb-[0px]">
       <header
         className={`md:bg-[#fff] bg-[#3A3A3A] flex items-center justify-between z-40 p-[20px] md:p-[30px] sticky top-0 transition-shadow duration-300 ${
           scrolled ? "shadow-[0_0_16px_-4px_rgba(0,0,0,0.07)]" : ""
