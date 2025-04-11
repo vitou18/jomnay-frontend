@@ -1,8 +1,8 @@
 import React from "react";
+import useIncome from "../core/action";
+import Container from "../../../layout/components/container/Container";
 import Input from "../../../utils/Input";
 import Button from "../../../utils/Button";
-import useIncome from "../core/action";
-import Container from "../../../layout/components/Container";
 
 const AddIncome = () => {
   const { onChangeAdd, incomeInfo, navigate, onCreateIncome, loading } =

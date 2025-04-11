@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../../utils/Button";
 import { RiDeleteBin7Line, RiEditLine } from "react-icons/ri";
 import moment from "moment/moment";
+import Button from "../../../utils/Button";
 
 const TableContainer = ({ data, type, onDelete, navigate }) => {
   //   console.log(data);

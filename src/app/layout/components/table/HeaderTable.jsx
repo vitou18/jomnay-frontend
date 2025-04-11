@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../utils/Button";
+import Button from "../../../utils/Button";
 import { RiAddLargeFill } from "react-icons/ri";
 
 const HeaderTable = ({onClick}) => {

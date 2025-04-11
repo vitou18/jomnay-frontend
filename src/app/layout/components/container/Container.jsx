@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../utils/Button";
+import Button from "../../../utils/Button";
 
-const Container = ({ title, children, navigate, onClick }) => {
+const Container = ({ title, children, onClick }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {

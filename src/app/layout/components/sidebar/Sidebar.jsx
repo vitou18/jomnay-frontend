@@ -1,6 +1,6 @@
-import Menu from "./Menu";
 import Logo from "./Logo";
 import Logout from "./Logout";
+import Menu from "./Menu";
 
 const Sidebar = ({ sidebarItems, sideBarShow, logo, onClickModal }) => {
   return (

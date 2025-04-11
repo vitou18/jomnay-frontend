@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Container from "../../layout/components/Container";
 import useExpense from "./core/action";
+import Container from "../../layout/components/container/Container";
 import AllExpense from "./components/AllExpense";
 
 const Expense = () => {

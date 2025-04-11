@@ -1,8 +1,8 @@
 import { RiDeleteBin7Line, RiEditLine, RiWalletLine } from "react-icons/ri";
-import Icon from "./Icon";
 import moment from "moment/moment";
+import Icon from "./Icon";
 import Tooltip from "./Tooltip";
-import Button from "../../utils/Button";
+import Button from "../../../utils/Button";
 
 const CardInfo = ({ data, onDelete, navigate, type }) => {
   const formattedDate = (date) => moment(date).format("Do MMM YYYY");
